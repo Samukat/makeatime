@@ -6,7 +6,6 @@ import HomePage from '../HomePage/index';
 const Layout = () => {
     return (
       <>
-        <HomePage />
         <Outlet />
       </>
     );

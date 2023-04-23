@@ -5,13 +5,16 @@ import ReactDOM from 'react-dom';
 import './App.scss';
 import {Routes, Route} from 'react-router-dom';
 import Layout from './Components/Layout/index';
+import HomePage from './Components/HomePage/index';
 
 class App extends Component {
   render(): React.ReactNode {
     return (
       <>
         <Routes>
-          <Route path="/" element={<Layout />}/>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<HomePage/>}></Route>
+          </Route>
         </Routes>
       </>
     );
