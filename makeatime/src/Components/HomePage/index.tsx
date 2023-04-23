@@ -6,10 +6,12 @@ import DisplayNumberNAME from '../DisplayNumber/DisplayNumber';
 
 
 const Home = () => {
+    var output = SliderNumber();
+    
     return (
       <>
-        <SliderNumber></SliderNumber>
-        <DisplayNumberNAME num={23}></DisplayNumberNAME>
+        {output[0]}
+        <DisplayNumberNAME num={Number(output[1])}></DisplayNumberNAME>
         <Outlet />
       </>
     );

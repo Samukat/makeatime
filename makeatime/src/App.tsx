@@ -8,7 +8,10 @@ import Layout from './Components/Layout/index';
 import HomePage from './Components/HomePage/index';
 
 class App extends Component {
+
   render(): React.ReactNode {
+    var slider_value = 0;
+
     return (
       <>
         <Routes>
