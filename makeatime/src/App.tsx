@@ -4,11 +4,15 @@ import DisplayNumberNAME from './Components/DisplayNumber/DisplayNumber'; //just
 import './App.scss';
 
 class App extends Component {
+
   render(): React.ReactNode {
+    var slider_value = 0;
+
     return (
       <>
         <SliderNumber></SliderNumber>
-        <DisplayNumberNAME num={23}></DisplayNumberNAME>
+        <DisplayNumberNAME num={slider_value}></DisplayNumberNAME>
+        
       </>
     );
   }
