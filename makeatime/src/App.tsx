@@ -1,14 +1,18 @@
 import React, { useState, Component } from 'react';
 import SliderNumber from './Components/SliderNumber/SliderNumber';
 import DisplayNumberNAME from './Components/DisplayNumber/DisplayNumber'; //just wanted to illustrate import name can be whatever
+import ReactDOM from 'react-dom';
 import './App.scss';
+import {Routes, Route} from 'react-router-dom';
+import Layout from './Components/Layout/index';
 
 class App extends Component {
   render(): React.ReactNode {
     return (
       <>
-        <SliderNumber></SliderNumber>
-        <DisplayNumberNAME num={23}></DisplayNumberNAME>
+        <Routes>
+          <Route path="/" element={<Layout />}/>
+        </Routes>
       </>
     );
   }
