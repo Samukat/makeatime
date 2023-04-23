@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <>
         <SliderNumber></SliderNumber>
-        <DisplayNumberNAME></DisplayNumberNAME>
+        <DisplayNumberNAME num={23}></DisplayNumberNAME>
       </>
     );
   }
@@ -16,8 +16,12 @@ class App extends Component {
 
 
 
-
-
+//notes:
+//function components:
+//for simple comp
+//
+//class componets:
+//maintain private data and complex ui and logic 
 
 
 //Stuff can be done in the funcitonal form too - but i changed it to class
