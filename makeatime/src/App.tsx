@@ -14,34 +14,12 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<HomePage/>}></Route>
+            {/* Routes to different pages here */}
           </Route>
         </Routes>
       </>
     );
   }
 }
-
-
-
-//notes:
-//function components:
-//for simple comp
-//
-//class componets:
-//maintain private data and complex ui and logic 
-
-
-//Stuff can be done in the funcitonal form too - but i changed it to class
-
-// function App() {
-//   const [value, onChange] = useState(new Date());
-
-//   return (
-//     <>
-//       <SliderNumber></SliderNumber>
-//       <DisplayNumberNAME></DisplayNumberNAME>
-//     </>
-//   );
-// }
 
 export default App;
