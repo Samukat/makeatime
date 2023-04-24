@@ -8,7 +8,7 @@ interface Props {
 
 //the componant as a function (as opposed to class that extends componants)
 function DisplayNumber(props: Props) {
-    console.log(props.num.toString())
+    //console.log(props.num.toString())
     return (
         <>
             <h1> Slider this the display number comp. </h1>
