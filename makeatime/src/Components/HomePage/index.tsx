@@ -5,9 +5,9 @@ import { Outlet } from 'react-router-dom';
 import SliderNumber from '../SliderNumber/SliderNumber';
 import DisplayNumberNAME from '../DisplayNumber/DisplayNumber';
 import { numberContext } from '../SliderNumber/SliderNumber';
+import LoginBox from "../LoginBox/index";
 
 const Home = () => {
-    var output = SliderNumber();
     const [width, setWidth] = useState(window.innerWidth);
 
 
@@ -28,10 +28,11 @@ const Home = () => {
     const numberValue = useContext(numberContext)
     return (
       <>
-        {output}
+        <SliderNumber />
         <DisplayNumberNAME num={numberValue}></DisplayNumberNAME>
         <p>{width}</p>
         <Outlet />
+        <LoginBox />
       </>
     );
   };
