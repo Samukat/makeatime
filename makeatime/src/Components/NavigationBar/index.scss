@@ -10,7 +10,7 @@
     padding: 7px 5px 4px 5px;
     background-color: #ffffff00;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 10%;
     align-items: center;
   
@@ -33,14 +33,13 @@
         height: 50px;
         padding: 10px 23px 2px 18px;
         align-items: center;
-      }
-  
-      .text-image {
-        width: auto;
-        height: 30px;
-        padding: 0px 0px 2px 0px;
-      }
-  
+      }  
+    }
+    .text-image {
+      grid-column: 1;
+      width: auto;
+      height: 30px;
+      padding: 0px 0px 2px 0px;
     }
   }
   

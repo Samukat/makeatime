@@ -15,6 +15,9 @@ const NavigationBar = () => {
             <img src={logoImage} alt="logo" className="logo-image" />
         </div>
       </a>
+      <div  className='text-image'>
+          Make A Time
+        </div>
     </nav>
   </>
   );
