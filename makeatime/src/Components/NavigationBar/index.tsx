@@ -11,18 +11,6 @@ const NavigationBar = () => {
 
   return(
   <>
-<<<<<<< HEAD
-    <nav className="nav">
-      <a href='/' className="site-title">
-        <div className='logo-padding'>
-            <img src={logoImage} alt="logo" className="logo-image" />
-        </div>
-      </a>
-      <div  className='text-image'>
-          Make A Time
-        </div>
-    </nav>
-=======
     <div className="nav-style">
       <Navbar className="nav-style-bar" variant="dark"> {/* //bg="dark"  */}
         <Container >
@@ -42,7 +30,6 @@ const NavigationBar = () => {
         MakeATime
       </Container>
     </div>
->>>>>>> peters-branch
   </>
   );
 };

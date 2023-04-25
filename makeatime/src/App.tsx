@@ -16,12 +16,8 @@ class App extends Component {
       <>
         <Routes>
           <Route path="/" element={<Layout />}>
-<<<<<<< HEAD
-            <Route path="/" element={<HomePage isLoggedIn={true}/>}></Route>
-=======
-            <Route path="/create" element={<HomePage/>}></Route>
-            <Route path="/view" element={<HomePage/>}></Route>
->>>>>>> peters-branch
+            <Route path="/create" element={<HomePage isLoggedIn={false}/>}></Route>
+            <Route path="/view" element={<HomePage isLoggedIn={true}/>}></Route>
             {/* Routes to different pages here */}
           </Route>
         </Routes>
