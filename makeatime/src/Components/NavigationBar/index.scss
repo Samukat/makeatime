@@ -1,58 +1,27 @@
-* {
-    box-sizing: border-box;
+//https://coolors.co/a4e1fe-264653-e9c46a-f4a261
+
+.nav-style{
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  background-color: #F4A261; //#F1AB86
+}
+
+.logo-image{
+  position:relative;
+  height: 60px;
+  width: auto;
+  padding: 10px;
+
+  &:hover{
+    background-color: #F4A261; ///MmmMMMMm idk man
   }
-  
-  .nav{
-    position: relative;
-    padding: 0px 0px 10px 0px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-    margin: 0px 0px 0px 0px;
-    padding: 7px 5px 4px 5px;
-    background-color: #ffffff00;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 10%;
-    align-items: center;
-  
-  
-    .site-title {
-      width:68px;
-      height: auto;
-      margin: 0px 5px 0px 10px;
-      padding: 0px 0px 0px 0px;
-      border-radius: 5px;
-      grid-column: 1;
-      &:hover {
-        cursor: pointer;
-        background-color: #f2cd99;
-        //change image to logo_hover.png
-        
-      }
-      .logo-image {
-        width: auto;
-        height: 50px;
-        padding: 10px 23px 2px 18px;
-        align-items: center;
-      }
-  
-      .text-image {
-        width: auto;
-        height: 30px;
-        padding: 0px 0px 2px 0px;
-      }
-  
-    }
-  }
-  
-  @media (max-width: 1400px) {
-    .text-image {
-      display: none;
-    }
-    .site-title{
-      width: fit-content !important;
-    }
-    .logo-image{
-      padding: 5px 12px 2px 10px !important;
-    }
-  }
-  
+}
+
+
+.nav-sub{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-style-bar{
+  background-color: #203C46;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
