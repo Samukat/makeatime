@@ -1,6 +1,20 @@
-* {
-    box-sizing: border-box;
+//https://coolors.co/a4e1fe-264653-e9c46a-f4a261
+
+.nav-style{
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+  background-color: #F4A261; //#F1AB86
+}
+
+.logo-image{
+  position:relative;
+  height: 60px;
+  width: auto;
+  padding: 10px;
+
+  &:hover{
+    background-color: #F4A261; ///MmmMMMMm idk man
   }
+<<<<<<< HEAD
   
   .nav{
     position: relative;
@@ -55,3 +69,16 @@
     }
   }
   
+=======
+}
+
+
+.nav-sub{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-style-bar{
+  background-color: #203C46;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+>>>>>>> peters-branch
