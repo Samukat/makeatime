@@ -7,18 +7,18 @@ import DisplayNumberNAME from '../DisplayNumber/DisplayNumber';
 import { numberContext } from '../SliderNumber/SliderNumber';
 import LoginBox from "../LoginBox/index";
 
-const Home = () => {
+type GreetProps = {
+  isLoggedIn: boolean
+}
+
+const Home = (props: GreetProps) => {
     const [width, setWidth] = useState(window.innerWidth);
-
-
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
-
     useEffect(() => {
       //add ad event listener
       window.addEventListener('resize', handleResize)
-
       //remove the event lister when this is no longer running 
       return () => {
         window.removeEventListener('resize', handleResize)
@@ -28,6 +28,12 @@ const Home = () => {
     const numberValue = useContext(numberContext)
     return (
       <>
+        <div>
+          {props.isLoggedIn
+          ? 'Select your availability'
+          : 'Welcome to Make A Time, create an event to get started'
+          }
+        </div>
         <SliderNumber />
         <DisplayNumberNAME num={numberValue}></DisplayNumberNAME>
         <p>{width}</p>

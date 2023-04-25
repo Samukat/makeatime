@@ -33,7 +33,7 @@ class LoginBox extends Component<{}, IState> {
 
   handleSubmit(event: any) {
     event.preventDefault();
-    console.log(this.state.username + " - - " + this.state.password);
+    console.log(this.state.username + " poopoopeepee" + this.state.password);
     //all loging things
   }
   

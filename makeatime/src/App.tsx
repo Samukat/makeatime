@@ -16,7 +16,7 @@ class App extends Component {
       <>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<HomePage/>}></Route>
+            <Route path="/" element={<HomePage isLoggedIn={true}/>}></Route>
             {/* Routes to different pages here */}
           </Route>
         </Routes>
