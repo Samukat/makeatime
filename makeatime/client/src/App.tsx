@@ -1,6 +1,4 @@
 import React, { useState, Component } from 'react';
-import SliderNumber from './Components/SliderNumber/SliderNumber';
-import DisplayNumberNAME from './Components/DisplayNumber/DisplayNumber'; //just wanted to illustrate import name can be whatever
 import ReactDOM from 'react-dom';
 import './App.scss';
 import {Routes, Route} from 'react-router-dom';
