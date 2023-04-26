@@ -64,10 +64,14 @@
   -o-transition: background-color 100ms ease-in-out;
   -ms-transition: background-color 100ms ease-in-out;
   transition: background-color 100ms ease-in-out;
+
+  text-decoration-line: underline;
+  text-underline-offset: 23px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #579dff;
   &:hover{
     color: #c7c7c7 !important;
     border-radius: 5px;
     background-color: #30343c;
   }
-
 }
