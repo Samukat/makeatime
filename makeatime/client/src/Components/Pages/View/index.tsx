@@ -18,7 +18,7 @@ const View: React.FC = () => {
 
   return (
     <>
-      <div>
+      <div className='api-response'>
         {typeof backendData.users === 'undefined' ? (
           <p>Loading...</p>
         ) : (
