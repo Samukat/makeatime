@@ -28,7 +28,7 @@ const NavigationBar = () => {
     <div className="nav-style">
       <Navbar className="nav-style-bar" variant="dark"> {/* //bg="dark"  */}
         <Container>
-          <Navbar.Brand href="\" className='nav-logo'>
+          <Navbar.Brand href="\" className='nav-logo' onClick={() => handleLinkClick(0)}>
             <img src={logoImage}  alt="logo" className="logo-image"/>
             Make A Time
           </Navbar.Brand>
