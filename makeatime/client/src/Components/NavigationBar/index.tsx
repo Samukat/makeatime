@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import logoImage from '../../../src/Images/logo.png';
-import logoImage_hov from '../../../src/Images/logo_hover.png';
+import logoImage from '../../Images/logo.png';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { Link, NavLink, useLocation} from 'react-router-dom';
-
 import './index.scss';
 
 const NavigationBar = () => {
@@ -46,11 +43,3 @@ const NavigationBar = () => {
 
 export default NavigationBar;
 
-
-{/* <nav className="nav">
-      <a href='/' className="site-title">
-        <div className='logo-padding'>
-            <img src={logoImage} alt="logo" className="logo-image" />
-        </div>
-      </a>
-    </nav> */}

@@ -1,38 +1,32 @@
-import React from 'react'
 import './index.scss';
-import { useEffect, useState, useContext } from 'react';
-import { Outlet } from 'react-router-dom';
-import SliderNumber from '../../SliderNumber/SliderNumber';
-import DisplayNumberNAME from '../../DisplayNumber/DisplayNumber';
-import { numberContext } from '../../SliderNumber/SliderNumber';
-import LoginBox from "../../LoginBox/index";
+import React, { useEffect, useState } from 'react';
 
-const View = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    useEffect(() => {
-      //add ad event listener
-      window.addEventListener('resize', handleResize)
-      //remove the event lister when this is no longer running 
-      return () => {
-        window.removeEventListener('resize', handleResize)
-      }
-    }, [])
+interface BackendData {
+  users?: string[];
+}
 
-    const numberValue = useContext(numberContext)
-    return (
-      <>
-        <div className='page'>
-          <SliderNumber />
-          <DisplayNumberNAME num={numberValue}></DisplayNumberNAME>
-          <p>{width}</p>
-          <Outlet />
-          <LoginBox />
-        </div>
-      </>
-    );
-  };
+const View: React.FC = () => {
+  const [backendData, setBackendData] = useState<BackendData>({});
 
-export default View
+  useEffect(() => {
+    fetch("/api")
+      .then(response => response.json())
+      .then(data => {
+        setBackendData(data);
+      });
+  }, []);
+
+  return (
+    <>
+      <div>
+        {typeof backendData.users === 'undefined' ? (
+          <p>Loading...</p>
+        ) : (
+          backendData.users.map((user, i) => <p key={i}>{user}</p>)
+        )}
+      </div>
+    </>
+  );
+};
+
+export default View;
