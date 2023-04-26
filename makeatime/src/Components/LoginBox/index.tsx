@@ -1,6 +1,4 @@
 import React, { Component, useState } from 'react';
-
-
 import './index.scss';
 
 interface Props {} //possibly add an "event name" that is parsed

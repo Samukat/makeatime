@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 import './App.scss';
 import {Routes, Route} from 'react-router-dom';
 import Layout from './Components/Layout/index';
-import HomePage from './Components/HomePage/index';
+import Home from './Components/Pages/Home/index';
+import Create from './Components/Pages/Create/index';
+import View from './Components/Pages/View/index';
 
 class App extends Component {
 
@@ -16,8 +18,9 @@ class App extends Component {
       <>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/create" element={<HomePage isLoggedIn={false}/>}></Route>
-            <Route path="/view" element={<HomePage isLoggedIn={true}/>}></Route>
+            <Route path="" element={<Home isLoggedIn={false}/>} />
+            <Route path="/create" element={<Create/>}></Route>
+            <Route path="/view" element={<View/>}></Route>
             {/* Routes to different pages here */}
           </Route>
         </Routes>
