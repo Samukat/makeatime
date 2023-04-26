@@ -40,7 +40,7 @@
   top: 7px;
   left: 100px;;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #ffff !important;
+  color: #c7c7c7 !important;
   font-weight: 550;
   display: flex;
   padding: 6px 10px 6px 10px;
@@ -54,8 +54,20 @@
   top: 7px;
   left: 100px;;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #0052CC !important;
+  color: #579dff !important;
   font-weight: 550;
   display: flex;
   padding: 6px 10px 6px 10px;
+
+  -webkit-transition: background-color 100ms ease-in-out;
+  -moz-transition: background-color 100ms ease-in-out;
+  -o-transition: background-color 100ms ease-in-out;
+  -ms-transition: background-color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out;
+  &:hover{
+    color: #c7c7c7 !important;
+    border-radius: 5px;
+    background-color: #30343c;
+  }
+
 }
