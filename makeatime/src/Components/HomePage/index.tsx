@@ -28,17 +28,19 @@ const Home = (props: GreetProps) => {
     const numberValue = useContext(numberContext)
     return (
       <>
-        <div>
-          {props.isLoggedIn
-          ? 'Select your availability'
-          : 'Welcome to Make A Time, create an event to get started'
-          }
+        <div className='page'>
+          <div>
+            {props.isLoggedIn
+            ? 'Select your availability'
+            : 'Welcome to Make A Time, create an event to get started'
+            }
+          </div>
+          <SliderNumber />
+          <DisplayNumberNAME num={numberValue}></DisplayNumberNAME>
+          <p>{width}</p>
+          <Outlet />
+          <LoginBox />
         </div>
-        <SliderNumber />
-        <DisplayNumberNAME num={numberValue}></DisplayNumberNAME>
-        <p>{width}</p>
-        <Outlet />
-        <LoginBox />
       </>
     );
   };
