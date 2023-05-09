@@ -7,10 +7,12 @@ import './style.scss';
 
 export const Navbar = () => {
     return (
-        <header>
-            <nav className="me-auto">
-                <NavLink to="\create">Create Event</NavLink>
-                <NavLink to="\view">View Event</NavLink>
+        <header className='nav-bar'>
+            <nav className="nav">
+                <NavLink to="/create">Create Event</NavLink>
+                <NavLink to="/event">View Event</NavLink>
+
+                
             </nav>
             <div className="nav-style">
                 <h1> Makeatime</h1>

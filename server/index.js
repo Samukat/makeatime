@@ -1,15 +1,20 @@
 const express = require('express');
-const testRoutes = require("./routes/test");
-
-
 const PORT = 3000;
-
 const app = express();
 
-app.set('trust proxy', true);
+
+
+//routes 
+const testRoutes = require("./routes/test");
+const testData = require("./routes/testing_data");
+
+
+
+app.set('trust proxy', true); //for ip stuff 
 
 //routes 
 app.use('/test', testRoutes);
+app.use('/data', testData);
 
 
 
@@ -22,10 +27,10 @@ function logger(req, res, next) {
 app.use(logger);
 
 
-//things
-app.get("/test", (req, res) => {
-    res.status(200).json({ ok: true })
-});
+// //things
+// app.get("/test", (req, res) => {
+//     res.status(200).json({ ok: true })
+// });
 
 
 
