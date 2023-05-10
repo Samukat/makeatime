@@ -7,8 +7,8 @@ import './style.scss';
 import { useLoaderData } from 'react-router-dom';
 
 export default function Event() {
-    const eventdata = useLoaderData()
-    var testdata = JSON.stringify({a:1 ,b:2 })
+    const eventdata = useLoaderData();
+    var testdata = JSON.parse(JSON.stringify(eventdata))
 
     return (
         <div className='event'>
@@ -16,7 +16,12 @@ export default function Event() {
             <p>This is a paragraph of text ...</p>
             
             <div>
-                {testdata}
+                {Object.keys(testdata).map((key: any, i) => (
+                <p className='key'>
+                    <span>Key Name: {key}</span>
+                    <span>Value: {JSON.stringify(testdata[key])}</span>
+                </p>
+                ))}
             </div>
         </div>
     )
@@ -25,5 +30,5 @@ export default function Event() {
 export const eventLoader = async () => {
     const res = await fetch('http://localhost:3000/data/').then(data => data.json());
 
-    return res.json()
+    return res
 }
