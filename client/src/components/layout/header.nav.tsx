@@ -25,7 +25,7 @@ export const NavigationBar  = () => {
                 </Container>
             </Navbar>
             <Container className='nav-sub'>
-                MakeATime
+                
             </Container>
         </div>
 
