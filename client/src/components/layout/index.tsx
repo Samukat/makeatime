@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.scss';
+import Container from 'react-bootstrap/Container';
 
 import { NavigationBar  } from './header.nav';
 import { Footer } from './footer';
@@ -12,7 +13,9 @@ export default function Layout() {
         <div className='layout'>
             <NavigationBar  />  
             <main>
-                <Outlet />
+                <Container className='main-content-box'>
+                    <Outlet />
+                </Container>
             </main>
             <Footer />
         </div>

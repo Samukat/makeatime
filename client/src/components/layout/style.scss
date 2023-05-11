@@ -93,6 +93,7 @@
     background-color: #5885AF; //#F1AB86
     width: 100%;
     box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+    max-height: 22px;
 
     .footer-bar{
         max-width: 80%;
@@ -111,5 +112,12 @@
             margin-left: auto;
         }
     }
+
+}
+
+.main-content-box{
+    max-width: 80%;
+    min-width: 400px;
+    margin-top: 40px;
 
 }
