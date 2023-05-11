@@ -28,7 +28,7 @@ export default function Event() {
 }
 
 export const eventLoader = async () => {
-    const res = await fetch('http://localhost:3000/data/').then(data => data.json());
+    const res = await fetch('http://localhost:3001/data/').then(data => data.json());
 
     return res
 }

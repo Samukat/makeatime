@@ -20,7 +20,7 @@ export const NavigationBar  = () => {
                     
                     <Nav className="me-auto">
                         <NavLink to="/create" className='nav-link'> Create Event</NavLink>
-                        <NavLink to="/view" className='nav-link'> View Event</NavLink>
+                        <NavLink to="/event" className='nav-link'> View Event</NavLink>
                     </Nav>
                 </Container>
             </Navbar>

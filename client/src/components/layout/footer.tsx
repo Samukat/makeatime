@@ -7,8 +7,13 @@ import React, { useState, useEffect } from 'react';
 
 export const Footer = () => {
     return (
-        <footer>
-            sfadfsfgsdkfujybthgsjduhfgbjsudhgfs
+        <footer className="footer">
+            <div>
+                makeatime 2023
+            </div>
+            <div>
+                sdfgsakdjhfgkasjhdfg akjhsdgkajhsdf info 1
+            </div>
         </footer>
     ) 
 }
