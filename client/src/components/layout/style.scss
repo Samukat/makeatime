@@ -6,54 +6,73 @@
 
 .nav-style{
     box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
-    background-color: #F4A261; //#F1AB86
+    background-color: #5885AF; //#F1AB86
     
+    .content-width-bar{
+        max-width: 80%;
+        min-width: 400px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-right: 3px;
+    }
 
-    .nav-bar {
+    .nav-style-bar {
+        align-items: center;
         
-        background-color: #41729F;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+        // background-color: #41729F;
+        background-color: #274472;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
         color: black;
 
-        font-size: 20px;
 
-        padding: 2px;
-
+        
         .nav-logo{
-            font-size: 120px;
             padding-left: 10px;
         }
 
-        .nav-links {
-            display:inline-flex;
-            float: right;    
-            
-        }
-
     }
 
-
-    
-    
-
-    // The a links
-    .nav-bar a {
-        padding: 12px;
-        color: black;
-        text-decoration: none;
-        
-    }
-
-    .nav-bar a:hover {
-        padding: 12px;
-        color: gray;
-        text-decoration: none;
-    }
-
-    .nav-bar a.active{
-        color: blue;
+    .nav-sub{
+        max-width: 80%;
+        min-width: 400px;
     }
 }
+
+
+// a.nav-link:hover{
+//     content: 'asd';
+// }
+
+.nav-link{
+    position: relative;
+}
+
+.nav-link::after{
+    content: "";
+    height: 2px;
+    width: 90%;
+    background: #365E81;
+    position: absolute;
+    display: block;  
+    left: 6px;
+    bottom: -10.3px;
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+
+.nav-link:hover::after{
+    opacity: 1;
+    height: 2px;
+}
+
+.nav-link.active::after{
+    height: 4px;
+    opacity: 1;
+}
+
+
+
 
 
   
@@ -66,21 +85,7 @@
 
 
 
-    
-// &:hover{
-//     background-color: #F4A261; ///MmmMMMMm idk man
-// }
 
-  
-  
-//   .nav-sub{
-//     font-family: Arial, Helvetica, sans-serif;
-//   }
-  
-//   .nav-style-bar{
-//     background-color: #203C46;
-//     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
-//   }
 
 
 
