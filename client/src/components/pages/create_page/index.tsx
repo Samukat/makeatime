@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Form, Container} from 'react-bootstrap';
+import DaySelector from './daySelector';
 
 // import Navbar from 'react-bootstrap/Navbar';
 // import Container from 'react-bootstrap/Container';
@@ -37,9 +38,13 @@ export default function Create() {
                     id={`dates-opt2`}
                 />
             </Form>
+
+            <DaySelector onSelect={function (day: string): void {
+                console.log(day);
+            } }></DaySelector>
         </>
 
-
+        
     )
 }
 
