@@ -22,41 +22,62 @@ export default function Create() {
                 <p>This is a paragraph of text ...</p>
             </div>
 
-           
-            <Form> {/* onChange={() => console.log(cal_type)} */}
-                <Form.Control
+           <div className='event-form'>
+                <Form.Control className='name-box'
                     placeholder="Event Name"
                     aria-label="Event-name"
                     aria-describedby="The name of your event should go here"
                 />
-                
-                <Form.Check
-                    inline
-                    label="Specific Days"
-                    name="group1"
-                    type='radio'
-                    id={`dates-opt1`}
-                    onChange={() => setCal_type(0)}
+
+                <div className='input-boxes'>
+                    <div className='input-boxes leftbox'>
+                        
+                        <Form> 
+                            
+
+                            <div className='radio-boxes'>
+                                <Form.Check
+                                    inline
+                                    label="Specific Days"
+                                    name="group1"
+                                    type='radio'
+                                    id={`dates-opt1`}
+                                    onChange={() => setCal_type(0)}
+                                    
+                                />
+                                <Form.Check
+                                    inline
+                                    label="Days of the week"
+                                    name="group1"
+                                    type='radio'
+                                    id={`dates-opt2`}
+                                    onChange={() => setCal_type(1)}
+                                />
+                            </div>
+                        </Form>
+                        
+
+                        <DaySelector 
+                            input_type={cal_type} 
+                            onSelect={(days: string[]) => {
+                                setSelectedDays(selectedDays => days);
+                            } }
+                            className='selector'
+                        ></DaySelector>
+                    </div>
                     
-                />
-                <Form.Check
-                    inline
-                    label="Days of the week"
-                    name="group1"
-                    type='radio'
-                    id={`dates-opt2`}
-                    onChange={() => setCal_type(1)}
-                />
+                    <div className='right-box'>
+                    <p>
+                        
+                    </p>
+                </div>
+                </div>
+                
+                
+                
+                <Button className='submit-btn' variant={selectedDays.length > 0? "outline-success": "outline-warning"} >Create!</Button>{' '}
 
-                <Button variant={selectedDays.length > 0? "outline-success": "outline-warning"} >Create!</Button>{' '}
-            </Form>
-            
-
-            <DaySelector input_type={cal_type} onSelect={(days: string[]) => {
-                setSelectedDays(selectedDays => days);
-                //console.log(selectedDays);
-            } } ></DaySelector>
-
+            </div>  
 
             {(selectedDays.length > 0) && selectedDays.map((day) => (
                 <p>

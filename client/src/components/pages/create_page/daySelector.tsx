@@ -5,12 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface Props {
     onSelect: (selectedDays: string[]) => void,
+    className?: string
     input_type: number //if 0 then calender, if 1 then weekdays
 }
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-const DaySelector:React.FC<Props> = ({ onSelect, input_type }) => { //on sellect is a prop function
+const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
     const handleSelectDay = (day: string) => {
@@ -22,24 +23,24 @@ const DaySelector:React.FC<Props> = ({ onSelect, input_type }) => { //on sellect
     };
 
     useEffect(() => {
-        onSelect(selectedDays)
+        props.onSelect(selectedDays)
       
     }, [selectedDays])
 
 
 
     useEffect(() => {
-        console.log(input_type)
+        console.log(props.input_type)
         //might need to add some array cleaning in here if switching between types
-    }, [input_type])
+    }, [props.input_type])
 
 
     
     
-    if (input_type === 1) {
+    if (props.input_type === 1) {
         return (
         
-            <div>
+            <div className={props.className}>
                 {daysOfWeek.map((day) => (
                     <button
                         key={day}
@@ -49,18 +50,12 @@ const DaySelector:React.FC<Props> = ({ onSelect, input_type }) => { //on sellect
                         {day}
                     </button>
                 ))}
-    
-                {/* {selectedDays.map((day) => (
-                    <p>
-                        {day}
-                    </p>
-                ))} */}
             </div> 
         );
     } else {
         return(
             <div>
-
+                calender WIP
             </div>
         )
     }
