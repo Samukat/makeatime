@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Form, Container} from 'react-bootstrap';
+import {Form, Container, Button} from 'react-bootstrap';
 import DaySelector from './daySelector';
 
 // import Navbar from 'react-bootstrap/Navbar';
@@ -9,6 +9,7 @@ import { async } from 'q';
 
 export default function Create() {
     const [cal_type, setCal_type] = useState(-1);
+    const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
     
 
@@ -23,6 +24,12 @@ export default function Create() {
 
            
             <Form> {/* onChange={() => console.log(cal_type)} */}
+                <Form.Control
+                    placeholder="Event Name"
+                    aria-label="Event-name"
+                    aria-describedby="The name of your event should go here"
+                />
+                
                 <Form.Check
                     inline
                     label="Specific Days"
@@ -41,14 +48,21 @@ export default function Create() {
                     onChange={() => setCal_type(1)}
                 />
 
-                
-
+                <Button variant={selectedDays.length > 0? "outline-success": "outline-warning"} >Create!</Button>{' '}
             </Form>
             
 
-            <DaySelector input_type={cal_type} onSelect={(selectedDays: string[]) => {
-                console.log(selectedDays);
+            <DaySelector input_type={cal_type} onSelect={(days: string[]) => {
+                setSelectedDays(selectedDays => days);
+                //console.log(selectedDays);
             } } ></DaySelector>
+
+
+            {(selectedDays.length > 0) && selectedDays.map((day) => (
+                <p>
+                    {day}
+                </p>
+            ))}
         </>
 
         
