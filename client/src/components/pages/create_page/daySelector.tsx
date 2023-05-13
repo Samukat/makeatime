@@ -4,34 +4,62 @@ import {Form, Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface Props {
-    onSelect: (day: string) => void;
+    onSelect: (selectedDays: string[]) => void,
+    input_type: number //if 0 then calender, if 1 then weekdays
 }
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-const DaySelector: React.FC<Props> = () => { //{ onSelect }
-    const [selectedDay, setSelectedDay] = useState<string>("");
+const DaySelector:React.FC<Props> = ({ onSelect, input_type }) => { //on sellect is a prop function
+    const [selectedDays, setSelectedDays] = useState<String[]>([]);
 
     const handleSelectDay = (day: string) => {
-        setSelectedDay(day);
-        //onSelect(day);
+        if (selectedDays.includes(day)) {
+            setSelectedDays(selectedDays => selectedDays.filter(item => item !== day))
+        } else {
+            setSelectedDays(selectedDays => [...selectedDays,day]);
+        }
+
+        //console.log(day + " --- " + selectedDays)
+       
+        onSelect(["asd","bsds"]);
     };
 
-    return (
-        <div>
-        {daysOfWeek.map((day) => (
-            <button
-                key={day}
-                onClick={() => handleSelectDay(day)}
-                style={{
-                    backgroundColor: selectedDay === day ? "yellow" : "white"
-                }}
-                >
-                {day}
-            </button>
-        ))}
-        </div>
-    );
+
+    useEffect(() => {
+      console.log(input_type)
+    
+    }, [input_type])
+    
+    if (input_type === 1) {
+        return (
+        
+            <div>
+                {daysOfWeek.map((day) => (
+                    <button
+                        key={day}
+                        onClick={() => handleSelectDay(day)}
+                        className={"day_selector_button " + ((selectedDays.includes(day)) ? "selected": null )} 
+                        >
+                        {day}
+                    </button>
+                ))}
+    
+                {/* {selectedDays.map((day) => (
+                    <p>
+                        {day}
+                    </p>
+                ))} */}
+            </div> 
+        );
+    } else {
+        return(
+            <div>
+
+            </div>
+        )
+    }
+    
 };
 
 export default DaySelector;

@@ -8,7 +8,7 @@ import './style.scss';
 import { async } from 'q';
 
 export default function Create() {
-    const [cal_type, setCal_type] = useState(0);
+    const [cal_type, setCal_type] = useState(-1);
 
     
 
@@ -21,14 +21,16 @@ export default function Create() {
                 <p>This is a paragraph of text ...</p>
             </div>
 
-
-        <Form>
-            <Form.Check
+           
+            <Form> {/* onChange={() => console.log(cal_type)} */}
+                <Form.Check
                     inline
                     label="Specific Days"
                     name="group1"
                     type='radio'
                     id={`dates-opt1`}
+                    onChange={() => setCal_type(0)}
+                    
                 />
                 <Form.Check
                     inline
@@ -36,12 +38,17 @@ export default function Create() {
                     name="group1"
                     type='radio'
                     id={`dates-opt2`}
+                    onChange={() => setCal_type(1)}
                 />
-            </Form>
 
-            <DaySelector onSelect={function (day: string): void {
-                console.log(day);
-            } }></DaySelector>
+                
+
+            </Form>
+            
+
+            <DaySelector input_type={cal_type} onSelect={(selectedDays: string[]) => {
+                console.log(selectedDays);
+            } } ></DaySelector>
         </>
 
         
