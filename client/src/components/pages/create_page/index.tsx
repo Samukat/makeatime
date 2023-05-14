@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Form, Container, Button} from 'react-bootstrap';
+import {Form, Container, Button, SplitButton} from 'react-bootstrap';
 import DaySelector from './daySelector';
 
 // import Navbar from 'react-bootstrap/Navbar';
@@ -11,9 +11,10 @@ export default function Create() {
     const [cal_type, setCal_type] = useState(-1);
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
-    
-
-
+    //create
+    const handleCreate = () => {
+        
+    }
 
     return (
         <>
@@ -30,11 +31,9 @@ export default function Create() {
                 />
 
                 <div className='input-boxes'>
-                    <div className='input-boxes leftbox'>
-                        
+                    <div className='inner-box leftbox'>
+                        <h3>Day Calender</h3>
                         <Form> 
-                            
-
                             <div className='radio-boxes'>
                                 <Form.Check
                                     inline
@@ -66,16 +65,19 @@ export default function Create() {
                         ></DaySelector>
                     </div>
                     
-                    <div className='right-box'>
-                    <p>
-                        
-                    </p>
+                    <div className='inner-box right-box'>
+                        <h3>Time picker</h3>
+                        <p>
+                            asdfAeFaDSEFsdFGADS
+
+                        </p>
+                        {/* <SplitButton text="Paste" items={{12,13,14}}/> */}
+                    </div>
                 </div>
-                </div>
                 
                 
                 
-                <Button className='submit-btn' variant={selectedDays.length > 0? "outline-success": "outline-warning"} >Create!</Button>{' '}
+                <Button className='submit-btn' variant={selectedDays.length > 0? "outline-success": "outline-warning"} onClick={handleCreate}>Create!</Button>{' '}
 
             </div>  
 

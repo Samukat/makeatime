@@ -2,7 +2,47 @@
 
 
 // Index
+.event-form{
 
+    .name-box{
+        margin-bottom: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .input-boxes{
+        display: flex;
+        //flex-direction: row;
+        justify-content: center;
+        gap: 10%;
+        flex-wrap: wrap;
+        row-gap: 150px;
+        
+        
+        
+        
+        
+
+        .inner-box{
+            display: block;
+            flex: 1 1 100px;
+            min-width: 320px;
+            
+        }
+
+        // @media screen and (max-width: 400px) {
+        //     .right-box{
+        //         margin-top: 100px;
+        //     }
+        // }
+
+
+    }
+
+    .name-box{
+        width: auto;
+    }
+}
 // .event-form{
 //     display: flex;
 //     background-color: grey;
@@ -29,23 +69,128 @@
 //     }
 // }
 
-// .selector{
-//     background-color: blue;
-// }
-// .radio-boxes{
-//     background-color: aqua;
-// }
 
 // 
 // Calender 
 // 
-.day_selector_button{
-    background-color: white;
-    padding: 5px;
-    margin-right: 5px;
 
+.selector{
+    display: flex;
+    flex-wrap: wrap;
+}
+.day_selector_div{
+    // padding: 5px;
+    
+    .day_selector_button{
+        background-color: rgba(66, 66, 66, 0.062);
+        // color: rgb(31, 31, 31);
+        
+        
+        border: 0;     
+        // border: 1;
+        // border-style: groove;
+        border-radius: 3px;
+        width: 50px;
+        margin-right: 3px;
+        padding-bottom: 40px;
+        // margin: 0;
+        // height: 100px;
+        // vertical-align: top;
+        transition: all 0.3s;
+    }
+
+    .day_selector_button.selected{
+        color: rgb(241, 241, 241);
+        font-weight:600;
+        background-color: rgba(66, 66, 66, 0.356);
+    }
+
+    @media(hover: hover) and (pointer: fine){
+        .day_selector_button:hover{
+            background-color: rgba(66, 66, 66, 0.555);
+        }
+    }
     
 }
-.selected{
-    background-color: red;
+
+
+.calender-cont{
+    display: flex;
+    // justify-content: right;
+    
+    p{
+        justify-self: left;
+    }
+    button{   
+        border: 0;  
+    }
+    .btnleft{
+        margin-left: auto;
+    }
+    .btnright{
+        margin-right: 10px;
+    }
 }
+.calender-days{
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    flex-wrap: wrap;
+
+    .dayTitles{
+        color: gray;
+        text-align: center;
+    }
+    
+    .day{
+        margin-top: 5px;
+        border: 0;
+        border-bottom: 1px;
+        border-style:solid;
+        border-color: rgba(119, 119, 119, 0.301);
+        display: flex;
+        justify-content: center;
+
+        button{
+            border: 0;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background-color: white;
+            color: rgb(56, 56, 56);
+            transition: all 0.1s;
+        }
+
+       
+    }
+
+    @media(hover: hover) and (pointer: fine){
+        .day:hover button{
+            background-color: rgba(66, 66, 66, 0.137);
+        }
+    }
+
+    // All conditional styling
+    .today{
+        button{
+            color: rgb(228, 16, 16);
+        }
+    }
+
+    .diffMonth{
+        button{
+            color: rgb(146, 146, 146);
+        }
+    }
+    // 
+
+    .dayTitles{
+        margin: 0px;
+        padding: 0;
+    }
+
+    .selected button{
+        background-color: rgba(66, 63, 236, 0.192);
+    }
+}
+
