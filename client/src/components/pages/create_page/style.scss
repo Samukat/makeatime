@@ -165,7 +165,7 @@
     }
 
     @media(hover: hover) and (pointer: fine){
-        .day:hover button{
+        .day:not(.selected):hover button{
             background-color: rgba(66, 66, 66, 0.137);
         }
     }
@@ -190,7 +190,17 @@
     }
 
     .selected button{
-        background-color: rgba(66, 63, 236, 0.192);
+        background-color: #c3e0e5af;
+    }
+
+    .onLeft button{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        
+    }
+    .onRight button{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
     }
 }
 

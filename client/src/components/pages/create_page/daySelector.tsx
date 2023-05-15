@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Component } from 'react';
 import {Form, Container, Button, ToggleButton} from 'react-bootstrap';
-import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual} from 'date-fns';
+import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual, addDays} from 'date-fns';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
+import { Value } from 'sass';
 
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
@@ -110,12 +111,14 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
 
                     {getDateRange().map((date, dateIdx) => (
                         <div key={date.toString()} className={classNames(
-                            'day',
+                            'day', 
                             isToday(date) && 'today',
                             !isSameMonth(date, startOfToday()) && 'diffMonth',  
-                            selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'selected'
+                            selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'selected',
+                            selectedDateDays.some((value:Date) => {return isEqual(addDays(date,1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onRight',
+                            selectedDateDays.some((value:Date) => {return isEqual(addDays(date,-1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onLeft'
                         )}> 
-                            <button
+                            <button 
                                 onClick={() => handleSelectDay(date)}
                                 type='button'>
                                 <time dateTime={format(date, 'yyyy-MM-dd')}>{format(date,'d')}</time>
