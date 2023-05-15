@@ -71,7 +71,6 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     }, []);
 
     if (props.input_type === 1) {
-
         const handleSelectDay = (day: string) => {
             if (selectedWeekDays.includes(day)) {
                 setSelectedWeekDays(selectedWeekDays => selectedWeekDays.filter(item => item !== day)) //delets reselected day
@@ -83,13 +82,13 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         return (
             <>
                 <div className = 'calendar-section'>
-                    <div className={props.className}>
+                    <div className={props.className} onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)}>
                         {daysOfWeek.map((day) => (
                             <div className='day_selector_div'>
-                                {/* <p>{day}</p> */}
                                 <button
                                     key={day}
-                                    onClick={() => handleSelectDay(day)}
+                                    onMouseEnter={() => { if (isMouseDown){handleSelectDay(day)}}}
+                                    onMouseDown={() => handleSelectDay(day)}
                                     className={"day_selector_button " + ((selectedWeekDays.includes(day)) ? "selected": null )} 
                                 >
                                     {day}
