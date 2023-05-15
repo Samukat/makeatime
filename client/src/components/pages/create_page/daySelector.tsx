@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Component, useRef } from 'react';
 import {Form, Container, Button, ToggleButton} from 'react-bootstrap';
 import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual} from 'date-fns';
-
+import './style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
 
@@ -31,26 +31,28 @@ function getDateRange(){
 const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
     const [selectedDateDays, setSelectedDateDays] = useState<Date[]>([]);
-    
-
-    
+    const [isMouseDown, setIsMouseDown] = useState(false);
 
     useEffect(() => {
         props.onSelect(selectedWeekDays)
       
     }, [selectedWeekDays])
 
-
-
     useEffect(() => {
         console.log(props.input_type)
         //might need to add some array cleaning in here if switching between types
     }, [props.input_type])
 
+    useEffect(() => {
+        const handleMouseUp = () => {
+            setIsMouseDown(false);
+        };
+        document.addEventListener('mouseup', handleMouseUp);
+        return () => {
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, []);
 
-    
-
-    
     if (props.input_type === 1) {
 
         const handleSelectDay = (day: string) => {
@@ -78,14 +80,16 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                 ))}
             </div> 
         );
-    } else if (props.input_type === 0) {
+    } 
+    else if (props.input_type === 0) {
         const handleSelectDay = (day: Date) => {
-            if (selectedDateDays.some((value:Date) => {return isEqual(day, value)}) ){
-                setSelectedDateDays(selectedDateDays => selectedDateDays.filter(item => !isEqual(day, item))) //delets reselected day
-            } else {
-                setSelectedDateDays(selectedDateDays => [...selectedDateDays,day]);
+            if (selectedDateDays.some((value: Date) => isEqual(day, value))) {
+                setSelectedDateDays(selectedDateDays =>
+                    selectedDateDays.filter(item => !isEqual(day, item))
+                ); //deletes reselected day
+            }   else {
+                setSelectedDateDays(selectedDateDays => [...selectedDateDays, day]);
             }
-            
         };
 
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -94,34 +98,42 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
 
         return(
             <>
-                <div className='calender-cont'>
-                    <p>{monthNames[startOfToday().getMonth()]}</p>
-                    <button className='btnleft'> {"<"} </button>
-                    <button className='btnright'> {">"} </button>
-                </div>
-                <div className='calender-days'>
-                    <p className='dayTitles'>S</p>
-                    <p className='dayTitles'>M</p>
-                    <p className='dayTitles'>T</p>
-                    <p className='dayTitles'>W</p>
-                    <p className='dayTitles'>T</p>
-                    <p className='dayTitles'>F</p>
-                    <p className='dayTitles'>S</p>
+                <div className = 'calendar-section'>
+                    <div className='calender-cont'>
+                        <p>{monthNames[startOfToday().getMonth()]}</p>
+                        <button className='btnleft'> {"<"} </button>
+                        <button className='btnright'> {">"} </button>
+                    </div>
+                    <div className="calender-days" onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} >
+                        <p className='dayTitles'>S</p>
+                        <p className='dayTitles'>M</p>
+                        <p className='dayTitles'>T</p>
+                        <p className='dayTitles'>W</p>
+                        <p className='dayTitles'>T</p>
+                        <p className='dayTitles'>F</p>
+                        <p className='dayTitles'>S</p>
 
-                    {getDateRange().map((date, dateIdx) => (
-                        <div key={date.toString()} className={classNames(
-                            'day',
-                            isToday(date) && 'today',
-                            !isSameMonth(date, startOfToday()) && 'diffMonth',  
-                            selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'selected'
-                        )}> 
+                        {getDateRange().map((date, dateIdx) => (
+                            <div
+                            key={date.toString()}
+                            className={classNames(
+                                "day",
+                                isToday(date) && "today",
+                                !isSameMonth(date, startOfToday()) && "diffMonth",
+                                selectedDateDays.some((value: Date) => isEqual(date, value)) &&
+                                "selected"
+                            )}
+                            >
                             <button
-                                onClick={() => handleSelectDay(date)}
-                                type='button'>
-                                <time dateTime={format(date, 'yyyy-MM-dd')}>{format(date,'d')}</time>
+                                onMouseEnter={() => { if (isMouseDown){handleSelectDay(date)}}}
+                                onMouseDown={() => handleSelectDay(date)}
+                                type="button"
+                            >
+                                <time dateTime={format(date, "yyyy-MM-dd")}>{format(date, "d")}</time>
                             </button>
-                        </div>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </>
         )

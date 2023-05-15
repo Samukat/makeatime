@@ -84,8 +84,6 @@
     .day_selector_button{
         background-color: rgba(66, 66, 66, 0.062);
         // color: rgb(31, 31, 31);
-        
-        
         border: 0;     
         // border: 1;
         // border-style: groove;
@@ -104,7 +102,6 @@
         font-weight:600;
         background-color: rgba(66, 66, 66, 0.356);
     }
-
     @media(hover: hover) and (pointer: fine){
         .day_selector_button:hover{
             background-color: rgba(66, 66, 66, 0.555);
@@ -193,4 +190,21 @@
         background-color: rgba(66, 63, 236, 0.192);
     }
 }
-
+.bottom-buttons{
+    margin-top:10px;
+}
+.clear-button{
+    background-color: white !important;
+    border-color: black !important;
+    width: 78px;
+    color: black !important;
+    margin-left: 189px
+}
+@media(hover: hover) and (pointer: fine){
+    .clear-button:hover{
+        background-color: rgba(66, 66, 66, 0.15) !important;
+    }
+    .clear-button:active {
+        background-color: #dbdafd!important;
+    }
+}
