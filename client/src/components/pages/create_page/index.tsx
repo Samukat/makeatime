@@ -1,21 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import {Form, Container, Button, SplitButton} from 'react-bootstrap';
 import DaySelector from './daySelector';
+import Select from 'react-select';
 
 // import Navbar from 'react-bootstrap/Navbar';
 // import Container from 'react-bootstrap/Container';
 import './style.scss';
 import { async } from 'q';
 
+let default_start = 715;
+let default_end = 2115;
+
 export default function Create() {
     const [cal_type, setCal_type] = useState(-1);
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
+
+    //time things
+    const [start_time, setStartTime] = useState(default_start);
+    const [end_time, setEndTime] = useState(default_end);
+
 
     //create
     const handleCreate = () => {
         
     }
 
+
+
+    function timeOptions(start_time:number, end_time:number = 2400){
+        const times: { value: string; label: string; }[] = [];
+        for (let hour = Math.floor(start_time/100); hour < Math.floor(end_time/100); hour++) {
+            for (let min = (hour==Math.floor(start_time/100)?start_time%100:0); min < 60; min+=15) {
+                times.push({value: (hour*100+min).toString(), label: `${hour==0||hour==12?"12":hour%12}:${min<10?"0":""}${min} ${hour<12?"am":"pm"}`})
+            }
+        }
+
+        console.log(times)
+        
+        return times;
+    }
+    
     return (
         <>
             <div className='event'>
@@ -67,6 +91,21 @@ export default function Create() {
                     
                     <div className='inner-box right-box'>
                         <h3>Time picker</h3>
+                        
+                        <p>Start Time</p>
+                        <Select options={timeOptions(0)} defaultValue={timeOptions(0).filter((time)=>{return Number(time.value) == default_start})} onChange={(e) => {
+                            setStartTime(Number(e?.value));
+                            if (start_time > end_time) {
+                                setEndTime(start_time)
+                            }
+                        }}/>
+                        <p>End Time</p>
+                        <Select options={
+                            timeOptions(start_time)} 
+                            defaultValue={timeOptions(start_time).filter((time)=>{return Number(time.value) == default_end})} 
+                            value={timeOptions(start_time).filter((time)=>{return Number(time.value)==end_time})} 
+                            onChange={(e) => { setEndTime(Number(e?.value));}
+                            }/>
                         <p>
                             asdfAeFaDSEFsdFGADS
 
