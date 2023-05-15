@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Component, useRef } from 'react';
 import {Form, Container, Button, ToggleButton} from 'react-bootstrap';
 import './style.scss';
-import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual, addDays} from 'date-fns';
+import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual, addDays, addMonths} from 'date-fns';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
@@ -16,25 +16,33 @@ interface Props {
 //const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-function getDateRange(){
-    //const days:string[] = [];
-
-    let today = startOfToday();
-
+function getDateRange(dayInMonth:Date){
     //creating the days array from start to end interval
     const days:Date[] = eachDayOfInterval({ 
-        start:startOfWeek(startOfMonth(today)), 
-        end:endOfWeek(endOfMonth(today)) //also so its start and end of week
+        start:startOfWeek(startOfMonth(dayInMonth)), 
+        end:endOfWeek(endOfMonth(dayInMonth)) //also so its start and end of week
     })
 
     return days;
 }
 
 const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
+
+    //selected lists
     const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
     const [selectedDateDays, setSelectedDateDays] = useState<Date[]>([]);
     const [isMouseDown, setIsMouseDown] = useState(false);
 
+    //calender date stuff
+    let today = startOfToday();
+    const [currentMonth, setCurrentMonth] = useState(today);
+    
+
+
+
+
+
+    //clearing
     const handleClear = (cal_type: string) => {
         if (cal_type == 'week') {
             setSelectedWeekDays([])
@@ -43,6 +51,8 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         }
     }
 
+
+    //return when changed
     useEffect(() => {
         props.onSelect(selectedWeekDays)
       
@@ -55,11 +65,8 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         props.onSelect(dateString)
     }, [selectedDateDays])
 
-    useEffect(() => {
-        console.log(props.input_type)
-        //might need to add some array cleaning in here if switching between types
-    }, [props.input_type])
 
+    //drag select
     useEffect(() => {
         const handleMouseUp = () => {
             setIsMouseDown(false);
@@ -120,9 +127,9 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
             <>
                 <div className = 'calendar-section'>
                     <div className='calender-cont'>
-                        <p>{monthNames[startOfToday().getMonth()]}</p>
-                        <button className='btnleft'> {"<"} </button>
-                        <button className='btnright'> {">"} </button>
+                        <p>{monthNames[currentMonth.getMonth()]}</p>
+                        <button className='btnleft' onClick={()=>{setCurrentMonth(addMonths(currentMonth,1))}}> {"<"} </button>
+                        <button className='btnright' onClick={()=>{setCurrentMonth(addMonths(currentMonth,-1))}}> {">"} </button>
                     </div>
                     <div className="calender-days" onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} >
                         <p className='dayTitles'>S</p>
@@ -133,11 +140,11 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                         <p className='dayTitles'>F</p>
                         <p className='dayTitles'>S</p>
 
-                    {getDateRange().map((date, dateIdx) => (
+                    {getDateRange(currentMonth).map((date, dateIdx) => (
                         <div key={date.toString()} className={classNames(
                             'day', 
                             isToday(date) && 'today',
-                            !isSameMonth(date, startOfToday()) && 'diffMonth',  
+                            !isSameMonth(date, currentMonth) && 'diffMonth',  
                             selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'selected',
                             selectedDateDays.some((value:Date) => {return isEqual(addDays(date,1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onRight',
                             selectedDateDays.some((value:Date) => {return isEqual(addDays(date,-1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onLeft'
