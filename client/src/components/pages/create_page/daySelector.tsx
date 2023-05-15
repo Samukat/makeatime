@@ -36,11 +36,6 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     //calender date stuff
     let today = startOfToday();
     const [currentMonth, setCurrentMonth] = useState(today);
-    
-
-
-
-
 
     //clearing
     const handleClear = (cal_type: string) => {
@@ -127,8 +122,9 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                 <div className = 'calendar-section'>
                     <div className='calender-cont'>
                         <p>{monthNames[currentMonth.getMonth()]}</p>
-                        <button className='btnleft' onClick={()=>{setCurrentMonth(addMonths(currentMonth,1))}}> {"<"} </button>
-                        <button className='btnright' onClick={()=>{setCurrentMonth(addMonths(currentMonth,-1))}}> {">"} </button>
+                        <p>{currentMonth.getFullYear()}</p>
+                        <button className='btnleft' onClick={()=>{setCurrentMonth(addMonths(currentMonth,-1))}}> {"<"} </button>
+                        <button className='btnright' onClick={()=>{setCurrentMonth(addMonths(currentMonth,1))}}> {">"} </button>
                     </div>
                     <div className="calender-days" onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} >
                         <p className='dayTitles'>S</p>
