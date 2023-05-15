@@ -16,13 +16,6 @@ export default function Create() {
         
     }
 
-    const handleClear = () => {
-        setSelectedDays([]);
-        for (let i = 0; i < selectedDays.length; i++) {
-            console.log(selectedDays[i]);
-        }
-    }
-
     return (
         <>
             <div className='event'>
@@ -83,18 +76,13 @@ export default function Create() {
                 </div>
                 <div className='bottom-buttons'>
                     <Button className='submit-btn' variant={selectedDays.length > 0? "outline-success": "outline-warning"} onClick={handleCreate}>Create!</Button>{' '}
-                    <Button className='clear-button' onClick={handleClear}>Clear</Button>
                 </div>
             </div>  
-
             {(selectedDays.length > 0) && selectedDays.map((day) => (
                 <p>
                     {day}
                 </p>
             ))}
         </>
-
-        
     )
 }
-

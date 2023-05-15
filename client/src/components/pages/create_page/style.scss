@@ -184,11 +184,13 @@
     margin-top:10px;
 }
 .clear-button{
+    position: absolute;
     background-color: white !important;
     border-color: black !important;
     width: 78px;
     color: black !important;
-    margin-left: 189px
+    margin-top: 10px;
+    margin-left: 290px
 }
 @media(hover: hover) and (pointer: fine){
     .clear-button:hover{

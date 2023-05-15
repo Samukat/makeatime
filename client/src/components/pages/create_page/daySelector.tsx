@@ -35,6 +35,14 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     const [selectedDateDays, setSelectedDateDays] = useState<Date[]>([]);
     const [isMouseDown, setIsMouseDown] = useState(false);
 
+    const handleClear = (cal_type: string) => {
+        if (cal_type == 'week') {
+            setSelectedWeekDays([])
+        } else if (cal_type == 'calendar') {
+            setSelectedDateDays([])
+        }
+    }
+
     useEffect(() => {
         props.onSelect(selectedWeekDays)
       
@@ -73,21 +81,25 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         };
 
         return (
-        
-            <div className={props.className}>
-                {daysOfWeek.map((day) => (
-                    <div className='day_selector_div'>
-                        {/* <p>{day}</p> */}
-                        <button
-                            key={day}
-                            onClick={() => handleSelectDay(day)}
-                            className={"day_selector_button " + ((selectedWeekDays.includes(day)) ? "selected": null )} 
-                        >
-                            {day}
-                        </button>
-                    </div>
-                ))}
-            </div> 
+            <>
+                <div className = 'calendar-section'>
+                    <div className={props.className}>
+                        {daysOfWeek.map((day) => (
+                            <div className='day_selector_div'>
+                                {/* <p>{day}</p> */}
+                                <button
+                                    key={day}
+                                    onClick={() => handleSelectDay(day)}
+                                    className={"day_selector_button " + ((selectedWeekDays.includes(day)) ? "selected": null )} 
+                                >
+                                    {day}
+                                </button>
+                            </div>
+                        ))}
+                    </div> 
+                    <Button className='clear-button' onClick={() => handleClear("week")}>Clear</Button>
+                </div>
+            </>
         );
     } 
     else if (props.input_type === 0) {
@@ -104,7 +116,6 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
             ];
-
         return(
             <>
                 <div className = 'calendar-section'>
@@ -140,6 +151,7 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                             </div>
                         ))}
                     </div>
+                    <Button className='clear-button' onClick={() => handleClear("calendar")}>Clear</Button>
                 </div>
             </>
         )
