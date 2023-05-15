@@ -1,15 +1,10 @@
 
-
-
-// Index
 .event-form{
-
     .name-box{
         margin-bottom: 50px;
         margin-left: auto;
         margin-right: auto;
     }
-
     .input-boxes{
         display: flex;
         //flex-direction: row;
@@ -17,28 +12,13 @@
         gap: 10%;
         flex-wrap: wrap;
         row-gap: 150px;
-        
-        
-        
-        
-        
-
         .inner-box{
             display: block;
             flex: 1 1 100px;
             min-width: 320px;
             
         }
-
-        // @media screen and (max-width: 400px) {
-        //     .right-box{
-        //         margin-top: 100px;
-        //     }
-        // }
-
-
     }
-
     .name-box{
         width: auto;
     }
@@ -73,7 +53,6 @@
 // 
 // Calender 
 // 
-
 .selector{
     display: flex;
     flex-wrap: wrap;
@@ -109,7 +88,6 @@
     }
     
 }
-
 
 .calender-cont{
     display: flex;
@@ -163,10 +141,9 @@
 
     @media(hover: hover) and (pointer: fine){
         .day:not(.selected):hover button{
-            background-color: rgba(66, 66, 66, 0.137);
+            background-color: rgba(66, 66, 66, 0.137) !important;
         }
     }
-
     // All conditional styling
     .today{
         button{
@@ -187,7 +164,7 @@
     }
 
     .selected button{
-        background-color: #c3e0e5af;
+        background-color: #dbdafd;
     }
 
     .onLeft button{
@@ -200,6 +177,9 @@
         border-bottom-right-radius: 0;
     }
 }
+
+
+//buttons
 .bottom-buttons{
     margin-top:10px;
 }
