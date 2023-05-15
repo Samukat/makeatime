@@ -171,11 +171,14 @@
     .onLeft button{
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        width:50px;
         
     }
     .onRight button{
+        width:50px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        position: relative;
     }
 }
 
