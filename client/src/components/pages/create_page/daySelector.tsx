@@ -40,6 +40,13 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         props.onSelect(selectedWeekDays)
       
     }, [selectedWeekDays])
+    useEffect(() => {
+        const dateString:string[] = []
+        selectedDateDays.forEach((day:Date) => {
+            dateString.push(day.toString())
+        })
+        props.onSelect(dateString)
+    }, [selectedDateDays])
 
 
 
