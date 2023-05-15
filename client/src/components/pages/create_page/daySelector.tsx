@@ -1,9 +1,15 @@
 import React, { useState, useEffect, Component, useRef } from 'react';
 import {Form, Container, Button, ToggleButton} from 'react-bootstrap';
+<<<<<<< HEAD
 import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual} from 'date-fns';
 import './style.scss';
+=======
+import {format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual, addDays} from 'date-fns';
+
+>>>>>>> 81d315747e3c7112580598ff6ee34933499e0205
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
+import { Value } from 'sass';
 
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
@@ -37,6 +43,13 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         props.onSelect(selectedWeekDays)
       
     }, [selectedWeekDays])
+    useEffect(() => {
+        const dateString:string[] = []
+        selectedDateDays.forEach((day:Date) => {
+            dateString.push(day.toString())
+        })
+        props.onSelect(dateString)
+    }, [selectedDateDays])
 
     useEffect(() => {
         console.log(props.input_type)
@@ -113,6 +126,7 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                         <p className='dayTitles'>F</p>
                         <p className='dayTitles'>S</p>
 
+<<<<<<< HEAD
                         {getDateRange().map((date, dateIdx) => (
                             <div
                             key={date.toString()}
@@ -130,6 +144,21 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                                 type="button"
                             >
                                 <time dateTime={format(date, "yyyy-MM-dd")}>{format(date, "d")}</time>
+=======
+                    {getDateRange().map((date, dateIdx) => (
+                        <div key={date.toString()} className={classNames(
+                            'day', 
+                            isToday(date) && 'today',
+                            !isSameMonth(date, startOfToday()) && 'diffMonth',  
+                            selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'selected',
+                            selectedDateDays.some((value:Date) => {return isEqual(addDays(date,1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onRight',
+                            selectedDateDays.some((value:Date) => {return isEqual(addDays(date,-1), value)}) && selectedDateDays.some((value:Date) => {return isEqual(date, value)}) && 'onLeft'
+                        )}> 
+                            <button 
+                                onClick={() => handleSelectDay(date)}
+                                type='button'>
+                                <time dateTime={format(date, 'yyyy-MM-dd')}>{format(date,'d')}</time>
+>>>>>>> 81d315747e3c7112580598ff6ee34933499e0205
                             </button>
                             </div>
                         ))}
