@@ -20,9 +20,9 @@ const router = createBrowserRouter(
       <Route path="create" element={<Create />}/>
       <Route path="event" element={<Event />} loader={eventLoader}>
         <Route path='abc'/> this is a nested route
-
+      
       </Route>
-
+      <Route path="about" element={<About />}/>
       {/* note can create adition layout paths etc */}
     </Route>
   )

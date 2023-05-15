@@ -76,9 +76,9 @@
   
 .logo-image{
     position:relative;
-    height: 60px;
+    height: 30px;
     width: auto;
-    padding: 1px;
+    padding-right: 5px;
 }
 
 
@@ -103,8 +103,15 @@
         align-items: stretch;
 
         .footer-component{
-            margin-right: 20px;
-    
+            margin-right: 80px;
+        }
+        
+        .footer-link{
+            text-decoration: none;
+            color: rgba(0,0,0,.6);
+        }
+        .footer-link:hover{
+            text-decoration: underline;
         }
 
         .last-comp{
