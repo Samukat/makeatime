@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {NavLink} from "react-router-dom";
+import Logo from "./images/Logo.png"
 
 // import Navbar from 'react-bootstrap/Navbar';
 // import Container from 'react-bootstrap/Container';
@@ -15,7 +16,7 @@ export const NavigationBar  = () => {
                 
                 
                     <NavLink className='navbar-brand' to='/'>
-                        <img  alt="logo" className="logo-image"/>
+                        <img src={Logo} className='logo-image'></img>
                         MakeATime</NavLink>
                     
                     <Nav className="me-auto">

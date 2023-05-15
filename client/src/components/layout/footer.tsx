@@ -13,7 +13,7 @@ export const Footer = () => {
                     © makeatime 2023
                 </div>
                 <div className='footer-component'>
-                    sdfgsakdjhfgkasjhdfg akjhsdgkajhsdf info 1
+                    Privacy
                 </div>
                 <div className='footer-component last-comp'>
                     2023
