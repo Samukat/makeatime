@@ -195,22 +195,29 @@
         border-bottom-right-radius: 0;
         position: relative;
     }
+
 }
 
+.calender-days.crossFade{
+    animation: fade-in-keyframes 0.2s;
+}
+
+@keyframes fade-in-keyframes {
+    from {opacity: 1}
+    5% {opacity: 0.1;}
+    to {opacity: 1}
+}
 
 //buttons
 .bottom-buttons{
-    margin-top:10px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+
+    
 }
-.clear-button{
-    position: absolute;
-    background-color: white !important;
-    border-color: black !important;
-    width: 78px;
-    color: black !important;
-    margin-top: 10px;
-    margin-left: 290px
-}
+
 @media(hover: hover) and (pointer: fine){
     .clear-button:hover{
         background-color: rgba(66, 66, 66, 0.15) !important;
@@ -219,3 +226,4 @@
         background-color: #dbdafd!important;
     }
 }
+

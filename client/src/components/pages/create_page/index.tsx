@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {Form, Container, Button, SplitButton} from 'react-bootstrap';
 import DaySelector from './daySelector';
 import Select from 'react-select';
@@ -14,6 +14,7 @@ let default_end = 2115;
 export default function Create() {
     const [cal_type, setCal_type] = useState(-1);
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
+    const eventNameRef = useRef<HTMLInputElement>(null);
 
     //time things
     const [start_time, setStartTime] = useState(default_start);
@@ -22,7 +23,14 @@ export default function Create() {
 
     //create
     const handleCreate = () => {
-        
+        fetch('', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"event-name":eventNameRef.current?.value ==null})
+})
     }
 
 
@@ -42,7 +50,7 @@ export default function Create() {
     
     return (
         <>
-            <div className='event'>
+            <div className='event' ref={eventNameRef}>
                 <h2>Welcome to the makeatime create page</h2>
                 <p>This is a paragraph of text ...</p>
             </div>
@@ -92,20 +100,23 @@ export default function Create() {
                     <div className='inner-box right-box'>
                         <h3>Time picker</h3>
                         
-                        <p>Start Time</p>
-                        <Select options={timeOptions(0)} defaultValue={timeOptions(0).filter((time)=>{return Number(time.value) == default_start})} onChange={(e) => {
-                            setStartTime(Number(e?.value));
-                            if (start_time > end_time) {
-                                setEndTime(start_time)
-                            }
-                        }}/>
-                        <p>End Time</p>
-                        <Select options={
-                            timeOptions(start_time)} 
-                            defaultValue={timeOptions(start_time).filter((time)=>{return Number(time.value) == default_end})} 
-                            value={timeOptions(start_time).filter((time)=>{return Number(time.value)==end_time})} 
-                            onChange={(e) => { setEndTime(Number(e?.value));}
+                        <p>Start Time
+                            <Select options={timeOptions(0)} defaultValue={timeOptions(0).filter((time)=>{return Number(time.value) == default_start})} onChange={(e) => {
+                                setStartTime(Number(e?.value));
+                                if (start_time > end_time) {
+                                    setEndTime(start_time)
+                                }
+                            }}/>
+                        </p>
+
+                        <p>End Time
+                            <Select 
+                                options={timeOptions(start_time)} 
+                                defaultValue={timeOptions(start_time).filter((time)=>{return Number(time.value) == default_end})} 
+                                value={timeOptions(start_time).filter((time)=>{return Number(time.value)==end_time})} 
+                                onChange={(e) => { setEndTime(Number(e?.value));}
                             }/>
+                        </p>
                         <p>
                             asdfAeFaDSEFsdFGADS
 
@@ -113,8 +124,9 @@ export default function Create() {
                         {/* <SplitButton text="Paste" items={{12,13,14}}/> */}
                     </div>
                 </div>
-                <div className='bottom-buttons'>
+                <div className='bottom-buttons' >
                     <Button className='submit-btn' variant={selectedDays.length > 0? "outline-success": "outline-warning"} onClick={handleCreate}>Create!</Button>{' '}
+                    <Button className='clear-button' variant='outline-warning'>Clear</Button>
                 </div>
             </div>  
             {(selectedDays.length > 0) && selectedDays.map((day) => (

@@ -36,12 +36,13 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     //calender date stuff
     let today = startOfToday();
     const [currentMonth, setCurrentMonth] = useState(today);
+    const [crossFade, setCrossFade] = useState(false); 
 
     //clearing
-    const handleClear = (cal_type: string) => {
-        if (cal_type == 'week') {
+    const handleClear = () => {
+        if (props.input_type == 1) {
             setSelectedWeekDays([])
-        } else if (cal_type == 'calendar') {
+        } else if (props.input_type == 0) {
             setSelectedDateDays([])
         }
     }
@@ -98,12 +99,14 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                             </div>
                         ))}
                     </div> 
-                    <Button className='clear-button' onClick={() => handleClear("week")}>Clear</Button>
+                    
                 </div>
             </>
         );
     } 
     else if (props.input_type === 0) {
+        
+
         const handleSelectDay = (day: Date) => {
             if (selectedDateDays.some((value: Date) => isEqual(day, value))) {
                 setSelectedDateDays(selectedDateDays =>
@@ -123,10 +126,16 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                     <div className='calender-cont'>
                         <p>{monthNames[currentMonth.getMonth()]}</p>
                         <p>{currentMonth.getFullYear()}</p>
-                        <button className='btnleft' onClick={()=>{setCurrentMonth(addMonths(currentMonth,-1))}}> {"<"} </button>
-                        <button className='btnright' onClick={()=>{setCurrentMonth(addMonths(currentMonth,1))}}> {">"} </button>
+                        <button className='btnleft' onClick={()=>{
+                            setCurrentMonth(addMonths(currentMonth,-1))
+                            setCrossFade(true)
+                        }}> {"<"} </button>
+                        <button className='btnright' onClick={()=>{
+                            setCurrentMonth(addMonths(currentMonth,1))
+                            setCrossFade(true)
+                        }}> {">"} </button>
                     </div>
-                    <div className="calender-days" onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} >
+                    <div className={classNames("calender-days", crossFade && "crossFade") } onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} onAnimationEnd={() => setCrossFade(false)}>
                         <p className='dayTitles'>S</p>
                         <p className='dayTitles'>M</p>
                         <p className='dayTitles'>T</p>
@@ -153,7 +162,6 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                             </div>
                         ))}
                     </div>
-                    <Button className='clear-button' onClick={() => handleClear("calendar")}>Clear</Button>
                 </div>
             </>
         )
