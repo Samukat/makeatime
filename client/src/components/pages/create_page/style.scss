@@ -77,13 +77,16 @@
     }
 
     .day_selector_button.selected{
-        color: rgb(241, 241, 241);
-        font-weight:600;
-        background-color: rgba(66, 66, 66, 0.356);
+        background-color: #dbdafd!important;
     }
     @media(hover: hover) and (pointer: fine){
         .day_selector_button:hover{
-            background-color: rgba(66, 66, 66, 0.555);
+            background-color: rgba(66, 66, 66, 0.15) !important;
+        }
+    }
+    @media(hover: hover) and (pointer: fine){
+        .day_selector_button.selected:hover{
+            background-color: #cccaf5!important;
         }
     }
     
