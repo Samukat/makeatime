@@ -23,14 +23,35 @@ export default function Create() {
 
     //create
     const handleCreate = () => {
-        fetch('', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({"event-name":eventNameRef.current?.value ==null})
-})
+
+        let name = eventNameRef.current?.value
+        console.log(name);
+
+
+
+
+        //dw was just testing bellow
+        // var data = {
+        //     ch_name: 'test',
+        //     words: 'test',
+        //     newviewPass: '',
+        //     neweditPass: ''
+        // };
+
+        // fetch(`http://wordsonline.ddns.net/savedata`, {
+        //     method: "POST",
+        //     credentials: "include",
+        //     body: JSON.stringify({
+        //         ch_name: 'test',
+        //         words: 'test',
+        //         newviewPass: '',
+        //         neweditPass: ''
+        //     }),
+        //     cache: "no-cache",
+        //     headers: new Headers({
+        //         "content-type": "application/json"
+        //     })
+        // })
     }
 
 
@@ -43,14 +64,13 @@ export default function Create() {
             }
         }
 
-        console.log(times)
         
         return times;
     }
     
     return (
         <>
-            <div className='event' ref={eventNameRef}>
+            <div className='event' >
                 <h2>Welcome to the makeatime create page</h2>
                 <p>This is a paragraph of text ...</p>
             </div>
@@ -58,6 +78,7 @@ export default function Create() {
            <div className='event-form'>
                 <Form.Control className='name-box'
                     placeholder="Event Name"
+                    ref={eventNameRef}
                     aria-label="Event-name"
                     aria-describedby="The name of your event should go here"
                 />
