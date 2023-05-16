@@ -25,33 +25,46 @@ export default function Create() {
     const handleCreate = () => {
 
         let name = eventNameRef.current?.value
-        console.log(name);
+        if (name?.length == 0) {
+            window.alert("Please input a event name");
+            return;
+        }
+        if (selectedDays.length == 0) {
+            window.alert("Please select some dates");
+            return;
+        }
+        if (cal_type == -1) {
+            return;
+        }
 
-
-
-
-        //dw was just testing bellow
-        // var data = {
-        //     ch_name: 'test',
-        //     words: 'test',
-        //     newviewPass: '',
-        //     neweditPass: ''
-        // };
-
-        // fetch(`http://wordsonline.ddns.net/savedata`, {
-        //     method: "POST",
-        //     credentials: "include",
-        //     body: JSON.stringify({
-        //         ch_name: 'test',
-        //         words: 'test',
-        //         newviewPass: '',
-        //         neweditPass: ''
-        //     }),
-        //     cache: "no-cache",
-        //     headers: new Headers({
-        //         "content-type": "application/json"
-        //     })
-        // })
+        const Data = {
+            eventName: name, 
+            dates: selectedDays, 
+            calenderType: cal_type, 
+            startTime: start_time,
+            endTime: end_time
+        };
+        
+        fetch('http://localhost:4000/create', { //change IP
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Data),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error creating event');
+            }
+        })
+        .then(data => {
+            console.log('Event created:', data);
+        })
+        .catch(error => {
+            console.error('Error creating event:', error);
+        });
     }
 
 
@@ -132,15 +145,11 @@ export default function Create() {
 
                         <p>End Time
                             <Select 
-                                options={timeOptions(start_time)} 
+                                options={timeOptions(start_time+15)} //may have issues
                                 defaultValue={timeOptions(start_time).filter((time)=>{return Number(time.value) == default_end})} 
                                 value={timeOptions(start_time).filter((time)=>{return Number(time.value)==end_time})} 
                                 onChange={(e) => { setEndTime(Number(e?.value));}
                             }/>
-                        </p>
-                        <p>
-                            asdfAeFaDSEFsdFGADS
-
                         </p>
                         {/* <SplitButton text="Paste" items={{12,13,14}}/> */}
                     </div>

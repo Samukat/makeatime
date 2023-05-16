@@ -1,3 +1,26 @@
+:root {
+  /* green scheme */
+  --Dark-Green: #164A41;
+  --Medium-Green: #4D774E;
+  --Light-Green: #9DC88D;
+  --Natural-Yellow: #F1B24A;
+  --White: #FFFFFF;
+
+  /* blue scheme */
+  --Dark-Blue: #274472;
+  --Midnight-Blue: #41729F;
+  --Blue-Grey: #5885AF;
+  --Baby-Blue: #C3E0E5;
+
+  /* main scheme */
+  --Main-Colour: var(--Medium-Green);
+  --Secondary-Colour: var(--Light-Green);
+  --Highlight-Colour: var(--Natural-Yellow);
+  --Tertiary-color: var(--Dark-Green);
+
+  
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

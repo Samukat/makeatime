@@ -50,6 +50,8 @@
 // }
 
 
+// var(--main-colour)
+
 // 
 // Calender 
 // 
@@ -77,19 +79,17 @@
     }
 
     .day_selector_button.selected{
-        background-color: #dbdafd!important;
+        background-color: rgba(#F1B24A, 0.45)!important;
     }
     @media(hover: hover) and (pointer: fine){
         .day_selector_button:hover{
-            background-color: rgba(66, 66, 66, 0.15) !important;
+            background-color: rgba(66, 66, 66, 0.15);
         }
-    }
-    @media(hover: hover) and (pointer: fine){
+
         .day_selector_button.selected:hover{
-            background-color: #cccaf5!important;
+            background-color: #cccaf5;
         }
-    }
-    
+    }    
 }
 
 .calender-cont{
@@ -124,7 +124,7 @@
 }
 .calender-days{
     display: grid;
-    grid-template-columns: repeat(7, 50px);
+    grid-template-columns: repeat(7, 50px); //fix later
     flex-wrap: wrap;
 
     .dayTitles{
@@ -145,7 +145,8 @@
             border: 0;
             margin-bottom: 5px;
             border-radius: 10px;
-            width: 32px;
+            // width: 32px;
+            width: 100%;
             height: 32px;
             background-color: white;
             color: rgb(56, 56, 56);
@@ -163,7 +164,7 @@
     // All conditional styling
     .today{
         button{
-            color: rgb(228, 16, 16);
+            color: var(--Highlight-Colour);
         }
     }
 
@@ -180,32 +181,51 @@
     }
 
     .selected button{
-        background-color: #dbdafd;
+        background-color: rgba(#F1B24A, 0.45);
     }
 
     .onLeft button{
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        width:50px;
-        
     }
     .onRight button{
-        width:50px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        position: relative;
     }
 
 }
 
-.calender-days.crossFade{
-    animation: fade-in-keyframes 0.2s;
+.calender-days.crossFadeLeft{
+    animation: fade-in-keyframes-left 0.2s;
 }
 
-@keyframes fade-in-keyframes {
-    from {opacity: 1}
-    5% {opacity: 0.1;}
-    to {opacity: 1}
+.calender-days.crossFadeRight{
+    animation: fade-in-keyframes-right 0.2s;
+}
+
+@keyframes fade-in-keyframes-left {
+    from {
+        opacity: 1;
+    }
+    5% {opacity: 0.1;
+        transform: translate(50px, 0); //fix
+    }
+    to {
+        opacity: 1;
+        
+    }
+}
+@keyframes fade-in-keyframes-right {
+    from {
+        opacity: 1;
+    }
+    5% {opacity: 0.1;
+        transform: translate(-50px, 0); //fix
+    }
+    to {
+        opacity: 1;
+        
+    }
 }
 
 //buttons
@@ -217,6 +237,8 @@
 
     
 }
+
+
 
 @media(hover: hover) and (pointer: fine){
     .clear-button:hover{

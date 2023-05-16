@@ -1,5 +1,5 @@
 const express = require('express');
-const PORT = 3000;
+const PORT = 4000;
 const app = express();
 
 
@@ -15,15 +15,24 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 app.set('trust proxy', true); //for ip stuff (id)
 
 
+
+
+
 //routes 
 const testRoutes = require("./routes/test");
 const testData = require("./routes/testing_data");
+const create = require("./routes/create")
 
 
 //routes 
 app.use('/test', testRoutes);
 app.use('/data', testData);
+app.use('/create', create);
 
+
+//db
+const DBFunctions = require('./DBInterface');
+//asdjhfgsj duhfg jsdhgf
 
 
 //middlewear

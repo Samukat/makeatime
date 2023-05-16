@@ -6,7 +6,7 @@
 
 .nav-style{
     box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
-    background-color: #5885AF; //#F1AB86
+    background-color: var(--Secondary-Colour); //#F1AB86
     
     .content-width-bar{
         max-width: 80%;
@@ -20,7 +20,9 @@
         align-items: center;
         
         // background-color: #41729F;
-        background-color: #274472;
+        background-color: var(--Main-Colour);
+        //background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        background-image: linear-gradient(to right, var(--Main-Colour) 90%, var(--Highlight-Colour));;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
         color: black;
 
@@ -90,7 +92,7 @@
 .footer{
     position: fixed;
     bottom: 0;
-    background-color: #5885AF; //#F1AB86
+    background-color: var(--Secondary-Colour); //#F1AB86
     width: 100%;
     box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
     max-height: 22px;

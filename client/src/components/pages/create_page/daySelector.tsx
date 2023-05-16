@@ -36,7 +36,7 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
     //calender date stuff
     let today = startOfToday();
     const [currentMonth, setCurrentMonth] = useState(today);
-    const [crossFade, setCrossFade] = useState(false); 
+    const [crossFade, setCrossFade] = useState(0); 
 
     //clearing
     const handleClear = () => {
@@ -128,14 +128,14 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
                         <p>{currentMonth.getFullYear()}</p>
                         <button className='btnleft' onClick={()=>{
                             setCurrentMonth(addMonths(currentMonth,-1))
-                            setCrossFade(true)
+                            setCrossFade(-1)
                         }}> {"<"} </button>
                         <button className='btnright' onClick={()=>{
                             setCurrentMonth(addMonths(currentMonth,1))
-                            setCrossFade(true)
+                            setCrossFade(1)
                         }}> {">"} </button>
                     </div>
-                    <div className={classNames("calender-days", crossFade && "crossFade") } onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} onAnimationEnd={() => setCrossFade(false)}>
+                    <div className={classNames("calender-days", crossFade === 1 && "crossFadeLeft", crossFade === -1 && "crossFadeRight") } onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} onAnimationEnd={() => setCrossFade(0)}>
                         <p className='dayTitles'>S</p>
                         <p className='dayTitles'>M</p>
                         <p className='dayTitles'>T</p>
