@@ -26,7 +26,7 @@ app.use('/data', testData);
 app.use('/create', create);
 
 //db
-const DBFunctions = require('./DBInterface');
+// /const DBFunctions = require('./DBInterface');
 
 //middlewear
 function logger(req, res, next) {

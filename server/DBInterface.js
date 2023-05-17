@@ -9,31 +9,49 @@ const pool = mysql.createPool({
   port: 3306
 });
 
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
 
-  console.log('Connected to the database.');
 
-  // Define your createEvent function
-  function createEvent(newEvent, callback) {
-    const query = 'INSERT INTO events SET ?';
-    connection.query(query, newEvent, (err, result) => {
-      connection.release(); // Release the connection back to the pool
+function createEvent(newEvent, callback) {
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+            return;
+        }
 
-      if (err) {
-        console.error('Error executing query:', err);
-        callback(err, null);
-        return;
-      }
-      callback(null, result.insertId);
+        console.log('Connected to pool');
+
+
+
+        const query = 'INSERT INTO events SET ?';
+
+
+
+
+        connection.query(query, newEvent, (err, result) => {
+            connection.release(); // Release the connection back to the pool
+
+            if (err) {
+                console.error('Error executing query:', err);
+                callback(err, null);
+                return;
+        }
+
+        callback(result.insertId);
+        });
+
     });
-  }
+}
 
-  // Export the createEvent function
-  module.exports = {
-    createEvent
-  };
-});
+function addDays(DaysArray, eventID) {
+    console.log(eventID);
+    console.log(DaysArray);
+}
+// Define your createEvent function
+
+
+
+ // Export the createEvent function
+module.exports = {
+    createEvent,
+    addDays
+};
