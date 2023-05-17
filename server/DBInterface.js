@@ -108,7 +108,7 @@ function getEventById(id, callback) {
             return;
         }
 
-        const query = 'DELETE FROM events WHERE id = ?;';
+        const query = '';
 
         connection.query(query, id, (err, result) => {
             connection.release(); // Release the connection back to the pool
