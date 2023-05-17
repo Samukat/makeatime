@@ -46,11 +46,4 @@ app.use(logger);
 //     res.status(200).json({ ok: true })
 // });
 
-
-
-
-
-
-
-
 app.listen(PORT, () => console.log(`Server now listening on port ${PORT}`));
