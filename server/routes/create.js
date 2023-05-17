@@ -13,24 +13,27 @@ router.post('/', bodyParser.json(), (req, res) => {
     console.log(dates);
     //to do data
 
+    let timeCreated = new Date();
+
     
     const newEvent = {
         eventName, 
         calenderType, 
         startTime, 
-        endTime
+        endTime,
+        timeCreated
     };
     
-    DaysArray = [
-        1,2,3,4
-    ]
 
     DBFunctions.createEvent(newEvent,
         (err, EventId) => {
-            if (err != null) {
+            if (err) {
                 return;
             }
-            DBFunctions.addDays(DaysArray, EventId)
+            DBFunctions.addDays(dates, calenderType, EventId, (err, res) => {
+                //DBFunctions.addTimes
+                console.log(res)
+            })
         }
     )
     

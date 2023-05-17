@@ -38,9 +38,10 @@ export default function Create() {
             return;
         }
 
+        const daysOfWeek = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const Data = {
             eventName: name, 
-            dates: selectedDays, 
+            dates: cal_type==0?selectedDays:selectedDays.map((day)=>{return daysOfWeek.indexOf(day)}), 
             calenderType: cal_type, 
             startTime: start_time,
             endTime: end_time
