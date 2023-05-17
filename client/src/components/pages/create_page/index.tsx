@@ -47,7 +47,7 @@ export default function Create() {
             endTime: end_time
         };
         
-        fetch('http://localhost:4000/create', { //change IP
+        fetch('http://192.168.0.14:4000/create', { //change IP
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,6 +58,7 @@ export default function Create() {
             if (response.ok) {
                 return response.json();
             } else {
+                console.log(response.json());
                 throw new Error('Error creating event');
             }
         })
@@ -82,6 +83,12 @@ export default function Create() {
         
         return times;
     }
+
+    useEffect(() => {
+        if (start_time > end_time) {
+            setEndTime(start_time+15)
+        }
+    },[start_time]);
     
     return (
         <>
@@ -138,9 +145,6 @@ export default function Create() {
                         <p>Start Time
                             <Select options={timeOptions(0)} defaultValue={timeOptions(0).filter((time)=>{return Number(time.value) == default_start})} onChange={(e) => {
                                 setStartTime(Number(e?.value));
-                                if (start_time > end_time) {
-                                    setEndTime(start_time)
-                                }
                             }}/>
                         </p>
 

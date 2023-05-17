@@ -18,8 +18,6 @@ function createEvent(newEvent, callback) {
             console.error('Error connecting to the database:', err);
             return;
         }
-
-        console.log('Connected to pool');
         console.log(newEvent)
 
 
@@ -43,13 +41,10 @@ function createEvent(newEvent, callback) {
     });
 }
 
-function addDays(DaysArray, calenderType, eventID, callback) {
-    console.log(eventID);
-    console.log(DaysArray);
-
+function addDays(daysArray, calenderType, eventID, callback) {
     let queries = "";
     const dataToSend = [];
-    DaysArray.map((day) =>{
+    daysArray.map((day) =>{
         queries += "INSERT INTO days SET ?;";
         let dayDate = new Date(Date.parse(day));
 
@@ -78,10 +73,60 @@ function addDays(DaysArray, calenderType, eventID, callback) {
                 return;
             }
             callback(null, results);
-
         });
     });
 }
+
+function deleteEventById(id, callback) {
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+            return;
+        }
+
+        const query = 'DELETE FROM events WHERE id = ?;';
+
+        connection.query(query, id, (err, result) => {
+            connection.release(); // Release the connection back to the pool
+
+            if (err) {
+                console.error('Error executing query:', err);
+                callback(err, null);
+                return;
+            }
+
+        callback(null, result);
+        });
+
+    });
+}
+
+function getEventById(id, callback) {
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+            return;
+        }
+
+        const query = 'DELETE FROM events WHERE id = ?;';
+
+        connection.query(query, id, (err, result) => {
+            connection.release(); // Release the connection back to the pool
+
+            if (err) {
+                console.error('Error executing query:', err);
+                callback(err, null);
+                return;
+            }
+
+        callback(null, result);
+        });
+
+    });
+}
+
+
+
 // Define your createEvent function
 
 
@@ -89,5 +134,7 @@ function addDays(DaysArray, calenderType, eventID, callback) {
  // Export the createEvent function
 module.exports = {
     createEvent,
-    addDays
+    addDays,
+    deleteEventById,
+    getEventById
 };

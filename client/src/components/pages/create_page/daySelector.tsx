@@ -167,7 +167,11 @@ const DaySelector:React.FC<Props> = (props) => { //on sellect is a prop function
         )
     } else {
         return(
-            <></>
+            <p>
+                Please select some days! 
+                The options are specific days by selecting from the calender, 
+                or, weekdays that you can use for weekly repeating events.
+            </p>
         )
     }
     
