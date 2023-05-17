@@ -85,10 +85,9 @@ export default function Create() {
     return (
         <>
             <div className='event' >
-                <h2>Welcome to the makeatime create page</h2>
-                <p>This is a paragraph of text ...</p>
+                <h2>Create an Event</h2>
             </div>
-
+            <div className='banner'/>
            <div className='event-form'>
                 <Form.Control className='name-box'
                     placeholder="Event Name"

@@ -28,7 +28,7 @@ app.use('/create', create);
 
 
 //db
-//const DBFunctions = require('./DBInterface');
+const DBFunctions = require('./DBInterface');
 //asdjhfgsj duhfg jsdhgf
 
 
