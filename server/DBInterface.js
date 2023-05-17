@@ -19,9 +19,6 @@ function createEvent(newEvent, callback) {
         }
 
         console.log('Connected to pool');
-
-
-
         const query = 'INSERT INTO events SET ?';
 
 
@@ -36,7 +33,7 @@ function createEvent(newEvent, callback) {
                 return;
         }
 
-        callback(result.insertId);
+        callback(null, result.insertId);
         });
 
     });

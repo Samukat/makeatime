@@ -26,10 +26,14 @@ router.post('/', bodyParser.json(), (req, res) => {
     ]
 
     DBFunctions.createEvent(newEvent,
-        DBFunctions.addDays
+        (err, EventId) => {
+            if (err != null) {
+                return;
+            }
+            DBFunctions.addDays(DaysArray, EventId)
+        }
     )
     
-  
     res.status(201).json(newEvent);
   });
 
