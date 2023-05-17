@@ -19,6 +19,7 @@ pool.getConnection((err, connection) => {
 
   // Define your createEvent function
   function createEvent(newEvent, callback) {
+    const query = 'INSERT INTO events SET ?';
     connection.query(query, newEvent, (err, result) => {
       connection.release(); // Release the connection back to the pool
 
