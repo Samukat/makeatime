@@ -242,10 +242,7 @@
 
 @media(hover: hover) and (pointer: fine){
     .clear-button:hover{
-        background-color: rgba(66, 66, 66, 0.15) !important;
-    }
-    .clear-button:active {
-        background-color: #dbdafd!important;
+        background-color: rgb(255, 196, 4) !important;
     }
 }
 

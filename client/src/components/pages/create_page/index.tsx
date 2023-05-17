@@ -25,6 +25,7 @@ export default function Create() {
     const handleCreate = () => {
 
         let name = eventNameRef.current?.value
+        console.log(name)
         if (name?.length == 0) {
             window.alert("Please input a event name");
             return;

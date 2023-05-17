@@ -15,9 +15,6 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 app.set('trust proxy', true); //for ip stuff (id)
 
 
-
-
-
 //routes 
 const testRoutes = require("./routes/test");
 const testData = require("./routes/testing_data");
@@ -31,7 +28,7 @@ app.use('/create', create);
 
 
 //db
-const DBFunctions = require('./DBInterface');
+//const DBFunctions = require('./DBInterface');
 //asdjhfgsj duhfg jsdhgf
 
 
