@@ -7,7 +7,6 @@ const connection = mysql.createConnection({
     database: '',
 });
 
-
 connection.connect((err) => {
     if (err) {
         console.error('error connecting:', err);
@@ -16,10 +15,6 @@ connection.connect((err) => {
 
     console.log('connected to database');
 });
-
-
-
-
 
 ///functions
 
@@ -35,7 +30,6 @@ function createEvent(eventData, callback) {
         callback(null, result.insertId);
     });
 }
-
 
 module.exports = {
     createEvent

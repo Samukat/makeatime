@@ -12,8 +12,6 @@ router.post('/', bodyParser.json(), (req, res) => {
 
     //actual db code here:
     
-
-    
     const newEvent = {
         eventName, 
         dates, 
