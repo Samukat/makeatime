@@ -108,7 +108,23 @@ function getEventById(id, callback) {
             return;
         }
 
-        const query = '';
+        //THIS IS THE SQL SELECT STATEMENT IM USING 
+
+        // SELECT 
+        //     events.*,
+        //     JSON_ARRAYAGG(days.id) AS ids,
+        //     JSON_ARRAYAGG(days.date) AS dates,
+        //     JSON_ARRAYAGG(days.weekDay) AS weekDays
+        // FROM 
+        //     events
+        // JOIN 
+        //     days ON events.id = days.eventId
+        // WHERE 
+        //     events.id = 6
+        // GROUP BY 
+        //     events.id;	
+
+        const query = 'SELECT events.*, JSON_ARRAYAGG(days.id) AS ids, JSON_ARRAYAGG(days.date) AS dates, JSON_ARRAYAGG(days.weekDay) AS weekDays FROM events JOIN days ON events.id = days.eventId WHERE events.id = ? GROUP BY events.id;';
 
         connection.query(query, id, (err, result) => {
             connection.release(); // Release the connection back to the pool

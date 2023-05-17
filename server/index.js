@@ -17,12 +17,12 @@ app.set('trust proxy', true); //for ip stuff (id)
 
 //routes 
 const testRoutes = require("./routes/test");
-const testData = require("./routes/testing_data");
-const create = require("./routes/create")
+const view = require("./routes/view");
+const create = require("./routes/create");
 
 //routes 
 app.use('/test', testRoutes);
-app.use('/data', testData);
+app.use('/view', view);
 app.use('/create', create);
 
 //db
@@ -35,11 +35,5 @@ function logger(req, res, next) {
 }
 
 app.use(logger);
-
-
-// //things
-// app.get("/test", (req, res) => {
-//     res.status(200).json({ ok: true })
-// });
 
 app.listen(PORT, () => console.log(`Server now listening on port ${PORT}`));

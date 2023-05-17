@@ -36,6 +36,7 @@ router.post('/', bodyParser.json(), (req, res) => {
     }
 
     let timeCreated = new Date();
+    let ID;
     
     const newEvent = {
         eventName, 
@@ -52,22 +53,24 @@ router.post('/', bodyParser.json(), (req, res) => {
                 res.status(400)
                 return;
             }
-            DBFunctions.addDays(dates, calenderType, EventId, (err, res) => {
-                if (err) {
-                    DBFunctions.deleteEventById(EventId, (err, res)=>{err?console.log(err):null});
+            DBFunctions.addDays(dates, calenderType, EventId, (err2, result) => {
+                if (err2) {
+                    DBFunctions.deleteEventById(EventId, (err3, result)=>{err?console.log(err3):null});
                     res.status(400)
                     return;
                 }
-
                 
+                console.log("New event created");
+  
                 //DBFunctions.addTimes
-                //console.log(res)
-            })
+                res.status(201).json({"id":EventId});
+
+            });
         }
-    )
+    );
     
     
-    res.status(201).json(newEvent);
+    return;
   });
 
   module.exports = router;

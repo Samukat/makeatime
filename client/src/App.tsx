@@ -18,10 +18,12 @@ const router = createBrowserRouter(
     <Route element={<Layout />}>  {/* path is "/" */}
       <Route index element={<Home />}/> {/* path is "/" */}
       <Route path="create" element={<Create />}/>
-      <Route path="event" element={<Event />} loader={eventLoader}>
-        <Route path='abc'/> this is a nested route
+
+
+      <Route path="event" element={<About />}/>
+      <Route path='/event/:id' element={<Event />} loader={eventLoader}/> this is a nested route
       
-      </Route>
+      
       <Route path="about" element={<About />}/>
       {/* note can create adition layout paths etc */}
     </Route>

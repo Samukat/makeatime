@@ -7,6 +7,7 @@ import Select from 'react-select';
 // import Container from 'react-bootstrap/Container';
 import './style.scss';
 import { async } from 'q';
+import { useNavigate } from 'react-router-dom';
 
 let default_start = 715;
 let default_end = 2115;
@@ -22,6 +23,7 @@ export default function Create() {
 
 
     //create
+    const navigate = useNavigate();
     const handleCreate = () => {
 
         let name = eventNameRef.current?.value
@@ -47,7 +49,7 @@ export default function Create() {
             endTime: end_time
         };
         
-        fetch('http://192.168.0.14:4000/create', { //change IP
+        fetch('http://localhost:4000/create', { //change IP
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,6 +66,7 @@ export default function Create() {
         })
         .then(data => {
             console.log('Event created:', data);
+            navigate(`/event/${data.id}`, { replace: true });
         })
         .catch(error => {
             console.error('Error creating event:', error);
