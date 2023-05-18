@@ -2,3 +2,32 @@
     padding: 10px;
     background-color: lightcoral;
 }
+
+
+///Day selector 
+.day-selector {
+    display: grid;
+    //note: grid-template-columns: repeat({var}, 1fr); <-- in tsx
+
+    .day-header {
+        background-color: lightblue;
+        margin: 10px 6% 10px 0;
+
+        text-align: center;
+
+
+        .date {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .day {
+            //
+        }
+    }
+
+    .time-selector {
+        margin: 10px 6% 10px 0;
+    }
+}
