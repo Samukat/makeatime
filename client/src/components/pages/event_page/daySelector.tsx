@@ -1,8 +1,6 @@
-import { error } from 'console';
-import { errorMonitor } from 'events';
 import React, { useState, useEffect, Component, useRef } from 'react';
-import { Interface } from 'readline';
 import {format} from 'date-fns';
+import TimeSelector from './timeSelector';
 
 
 interface Props {
@@ -11,6 +9,7 @@ interface Props {
     dates: string[],
     startTime: number,
     endTime: number,
+    dataIds: number[],
 
     className?: string,
 
@@ -20,8 +19,8 @@ interface Props {
 const daysOfWeek = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const DaySelector:React.FC<Props> = (props) => {
-    const {calenderType, weekDays, dates} = props;
-    const totalDays:number = calenderType==0?dates.length:weekDays.length;  
+    const {dataIds, calenderType, weekDays, dates, startTime, endTime} = props;
+    const totalDays:number = dataIds.length
 
     const [selectedDays, setSelectedDays] = useState<string[]>([]); 
 
@@ -83,9 +82,7 @@ const DaySelector:React.FC<Props> = (props) => {
                         <p>
                             This will be the time selector
                         </p>
-                        <p>
-                            AHH these are times
-                        </p>
+                        <TimeSelector startTime={startTime} endTime={endTime}/>
                     </div>                    
                 ))}
 

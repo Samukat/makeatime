@@ -34,6 +34,7 @@ export default function Event() {
                 dates={data.dates}
                 startTime={data.startTime} 
                 endTime={data.endTime}  
+                dataIds={data.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
                     //null
                     //wip
