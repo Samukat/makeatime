@@ -1,3 +1,4 @@
+//Our DB holds times stored as integers, so we need a function to convert the time integers to a DateTime type (for math)... here it is
 export default function ConvertToTime(time: number): Date {
     // Convert the time to a string and pad it with leading zeros if necessary
     const timeString = time.toString().padStart(4, '0');

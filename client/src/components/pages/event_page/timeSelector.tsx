@@ -9,33 +9,36 @@ interface Props {
     onDayChange?: (selectedWeekDays: string[]) => void
 }
 
-
 const time_interval = 15;
+const milliseconds_in_hour = 3600000
 
 const TimeSelector:React.FC<Props> = (props) => {
+    console.log("poo cunt")
+    function createButtonArray(startTimeInt:number, endTimeInt:number, time_interval:number){
+        const startTime = convertToTime(startTimeInt)
+        const endTime = convertToTime(endTimeInt)
 
-    function createButtonArray(startTime:number, endTime:number, time_interval:number){
-        const elapsed_time = endTime - startTime;
+        const elapsed_time = endTime.getTime() - startTime.getTime();
         
-        const elapsed_hours = Math.floor(elapsed_time/100);
+        const elapsed_hours = endTime.getHours() - startTime.getHours();
+        const elapsed_minutes = endTime.getMinutes() - startTime.getMinutes();
+        console.log(endTime.getMinutes())
+        console.log(startTime.getMinutes())
         
-        const total_btns = elapsed_hours*(Math.floor(60/time_interval)) + (elapsed_time%100)%15;
-        
+        const total_btns = Math.floor((elapsed_hours*60+elapsed_minutes)/time_interval + 1)
 
-        const buttons: {index:number, timeStart:number}[] = []
-        var current_time = startTime;
+        const buttons: {index:number, timeStart:string}[] = []
+        var current_hours = startTime.getHours()
+        var current_minutes = startTime.getMinutes()
 
         for (let i = 0; i < total_btns; i++) {
             buttons.push({
                 index: i,
-                timeStart: current_time
+                timeStart: `${Math.floor(current_hours)}:${current_minutes}${current_minutes == 0 ? '0': ''}`
             })
 
-            current_time += time_interval
-            if (current_time%100 >= 60) {
-                current_time += 100; //ok this is wrong but ook
-                current_time -= Math.floor((current_time%100)/60)*60;
-            }
+            current_hours += time_interval/60
+            current_minutes = (current_minutes + time_interval) % 60
             
         }
 
