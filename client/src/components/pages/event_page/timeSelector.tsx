@@ -13,8 +13,7 @@ const time_interval = 15;
 const milliseconds_in_hour = 3600000
 
 const TimeSelector:React.FC<Props> = (props) => {
-    console.log("poo cunt")
-    function createButtonArray(startTimeInt:number, endTimeInt:number, time_interval:number){
+        function createButtonArray(startTimeInt:number, endTimeInt:number, time_interval:number){
         const startTime = convertToTime(startTimeInt)
         const endTime = convertToTime(endTimeInt)
 
@@ -41,15 +40,13 @@ const TimeSelector:React.FC<Props> = (props) => {
             current_minutes = (current_minutes + time_interval) % 60
             
         }
-
-        
         return buttons;
     }
 
     return(
         <>
             {createButtonArray(props.startTime, props.endTime, time_interval).map((timeSpot) => (
-                <button>
+                <button className='time-buttons'>
                     {timeSpot.timeStart}
                 </button>
             ))}

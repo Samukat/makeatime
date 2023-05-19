@@ -2,37 +2,54 @@
     padding: 10px;
     background-color: lightcoral;
 }
-
+// .day-header {
+//     background-color: lightblue;
+//     margin: 10px 6% 10px 0;
+//     text-align: center;
+//     .date {
+//         white-space: nowrap;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//     }
+// }
 
 ///Day selector 
 .day-selector {
-    display: flexbox;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .time-selector {
+    display: flex;
     flex-direction: column;
-    position: relative;
-    align-items: flex-start;
-
-    //note: grid-template-columns: repeat({var}, 1fr); <-- in tsx
-
-    .day-header {
-        
-        background-color: lightblue;
-        margin: 10px 6% 10px 0;
-
-        text-align: center;
-
-
-        .date {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis
-        }
-
-        .day {
-            //
-        }
+    margin-right: 10px; // Adds spacing between time-selector and days-table
+  }
+  
+  .day-header {
+    display: grid;
+    grid-template-rows: auto; // Each row will adjust its height based on the content
+    gap: 10px; 
+  }
+  
+  .time-buttons {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px; // Adds spacing between the buttons in time-selector
+    
+    &:hover {
+      background-color: darken(#007bff, 10%);
     }
-
-    .time-selector {
-        margin: 10px 6% 10px 0;
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #007bff;
     }
-}
+  }
+  
