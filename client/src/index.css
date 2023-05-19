@@ -5,6 +5,10 @@
   --Light-Green: #9DC88D;
   --Natural-Yellow: #F1B24A;
   --White: #FFFFFF;
+  --Dark-Purple: #5c1bff;
+  --Medium-Purple: #713fef;
+  --Light-Purple: #9a7aeb;
+
 
   /* blue scheme */
   --Dark-Blue: #274472;
@@ -13,9 +17,9 @@
   --Baby-Blue: #C3E0E5;
 
   /* main scheme */
-  --Main-Colour: var(--Medium-Green);
-  --Secondary-Colour: var(--Light-Green);
-  --Highlight-Colour: var(--Natural-Yellow);
+  --Main-Colour: var(--Medium-Purple);
+  --Secondary-Colour: var(--Light-Purple);
+  --Highlight-Colour: var(--Medium-Purple);
   --Tertiary-color: var(--Dark-Green);
 }
 
