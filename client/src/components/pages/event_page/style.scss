@@ -6,10 +6,15 @@
 
 ///Day selector 
 .day-selector {
-    display: grid;
+    display: flexbox;
+    flex-direction: column;
+    position: relative;
+    align-items: flex-start;
+
     //note: grid-template-columns: repeat({var}, 1fr); <-- in tsx
 
     .day-header {
+        
         background-color: lightblue;
         margin: 10px 6% 10px 0;
 
