@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import './style.scss';
 import { LoaderFunctionArgs, useLoaderData, useParams } from 'react-router-dom';
 import DaySelector from './daySelector';
+import Time from '../../../helpers/Time';
 
 export default function Event() {
     
@@ -16,6 +17,9 @@ export default function Event() {
 
 
     //console.log((data.calenderType==0?data.dates:data.weekDays));
+    const startTime = new Time(data.startTime);
+    const endTime = new Time(data.endTime);
+
     return (
         <div className='event'>
             <h2>Welcome to the makeatime event page</h2>
@@ -26,8 +30,8 @@ export default function Event() {
                 calenderType={data.calenderType}
                 weekDays={data.weekDays}
                 dates={data.dates}
-                startTime={data.startTime} 
-                endTime={data.endTime}  
+                startTime={startTime} 
+                endTime={endTime}  
                 dataIds={data.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
                     //null

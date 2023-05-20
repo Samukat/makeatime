@@ -1,14 +1,15 @@
 import React, { useState, useEffect, Component, useRef } from 'react';
 import {format} from 'date-fns';
 import TimeSelector from './timeSelector';
+import Time from '../../../helpers/Time';
 
 
 interface Props {
     calenderType: number,
     weekDays: string[],
     dates: string[],
-    startTime: number,
-    endTime: number,
+    startTime: InstanceType<typeof Time>,
+    endTime: InstanceType<typeof Time>,
     dataIds: number[],
 
     className?: string,

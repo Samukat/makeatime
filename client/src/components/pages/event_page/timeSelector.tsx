@@ -1,35 +1,32 @@
 import React, { useState, useEffect, Component, useRef } from 'react';
 import {format} from 'date-fns';
-import convertToTime from "./convertToTime"
+import Time from '../../../helpers/Time';
 
 interface Props {
-    startTime: number,
-    endTime: number,
+    startTime: InstanceType<typeof Time>,
+    endTime: InstanceType<typeof Time>,
     className?: string,
     onDayChange?: (selectedWeekDays: string[]) => void
 }
 
 const time_interval = 15;
-const milliseconds_in_hour = 3600000
 
 const TimeSelector:React.FC<Props> = (props) => {
-    console.log("poo cunt")
-    function createButtonArray(startTimeInt:number, endTimeInt:number, time_interval:number){
-        const startTime = convertToTime(startTimeInt)
-        const endTime = convertToTime(endTimeInt)
+    function createButtonArray(startTimeOBJ:InstanceType<typeof Time>, endTimeOBJ:InstanceType<typeof Time>, time_interval:number){
+        const elapsed_time = startTimeOBJ.interval(endTimeOBJ)
+        
+        // const elapsed_hours = endTime.getHours() - startTime.getHours();
+        // const elapsed_minutes = endTime.getMinutes() - startTime.getMinutes();
+        // console.log(endTime.getMinutes())
+        // console.log(startTime.getMinutes())
 
-        const elapsed_time = endTime.getTime() - startTime.getTime();
+        console.log(elapsed_time.time_as_int)
         
-        const elapsed_hours = endTime.getHours() - startTime.getHours();
-        const elapsed_minutes = endTime.getMinutes() - startTime.getMinutes();
-        console.log(endTime.getMinutes())
-        console.log(startTime.getMinutes())
-        
-        const total_btns = Math.floor((elapsed_hours*60+elapsed_minutes)/time_interval + 1)
+        const total_btns = Math.floor((elapsed_time.getHours*60+elapsed_time.getMinutes)/time_interval + 1)
 
         const buttons: {index:number, timeStart:string}[] = []
-        var current_hours = startTime.getHours()
-        var current_minutes = startTime.getMinutes()
+        var current_hours = startTimeOBJ.getHours
+        var current_minutes = startTimeOBJ.getMinutes
 
         for (let i = 0; i < total_btns; i++) {
             buttons.push({
@@ -42,7 +39,7 @@ const TimeSelector:React.FC<Props> = (props) => {
             
         }
 
-        
+        console.log(buttons)
         return buttons;
     }
 
