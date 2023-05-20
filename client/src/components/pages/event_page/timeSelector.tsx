@@ -46,7 +46,7 @@ const TimeSelector:React.FC<Props> = (props) => {
     return(
         <>
             {createButtonArray(props.startTime, props.endTime, time_interval).map((timeSpot) => (
-                <button>
+                <button className='time-buttons'>
                     {timeSpot.timeStart}
                 </button>
             ))}
