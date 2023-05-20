@@ -6,9 +6,9 @@ const Time = class {
 
 
     public constructor(time_int?:number, hours?:number, minutes?:number, length?:number) {
-        if ((time_int && hours) || (hours && !minutes)) {
-            throw Error("Bad input")
-        }
+        // if ((time_int && hours) || (hours && !minutes)) {
+        //     throw Error("Bad input")
+        // }
 
         if (time_int != undefined) {
             
