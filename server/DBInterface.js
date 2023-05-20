@@ -135,9 +135,28 @@ function getEventById(id, callback) {
     });
 }
 
+function getTimesById(id, callback) {
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error connecting to the database:', err);
+            return;
+        }
 
+        const query = "SELECT t.* FROM times t JOIN days d ON t.dayId = d.id JOIN events e ON d.eventId = e.id WHERE e.id = ?;";
+        connection.query(query, id, (err, result) => {
+            connection.release(); // Release the connection back to the pool
 
-// Define your createEvent function
+            if (err) {
+                console.error('Error executing query:', err);
+                callback(err, null);
+                return;
+            }
+
+            callback(null, result);
+        });
+    });
+}
+
 
 
 
@@ -146,5 +165,6 @@ module.exports = {
     createEvent,
     addDays,
     deleteEventById,
-    getEventById
+    getEventById,
+    getTimesById
 };

@@ -18,19 +18,20 @@ export default function Event() {
 
     return (
         <div className='event'>
-            <h1 className='event-title'> Event: {data.eventName}</h1>
+            <h1 className='event-title'> Event: {data.event.eventName}</h1>
 
             <DaySelector
-                calenderType={data.calenderType}
-                weekDays={data.weekDays}
-                dates={data.dates}
+                calenderType={data.event.calenderType}
+                weekDays={data.event.weekDays}
+                dates={data.event.dates}
                 startTime={startTime}
                 endTime={endTime}
-                dataIds={data.ids}
+                dataIds={data.event.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
                     //null
                     //wip
                 }}
+                dayData = {data.days}
             ></DaySelector>
 
         </div>

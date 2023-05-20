@@ -17,7 +17,9 @@ interface Props {
 
     className?: string,
 
-    onDayChange: (selectedWeekDays: string[]) => void
+    onDayChange: (selectedWeekDays: string[]) => void,
+
+    dayData: any //bro really!
 }
 
 
@@ -44,16 +46,15 @@ function getWeekRange(dayInWeek: Date) {
 
 
 const DaySelector: React.FC<Props> = (props) => {
-    const { dataIds, calenderType, weekDays, dates, startTime, endTime } = props;
-    const totalDays: number = dataIds.length
-
-    let today = startOfToday()
     const [selectedDays, setSelectedDays] = useState<Date[]>([]);
     const [isMouseDown, setIsMouseDown] = useState(false);
+
+    let today = startOfToday()
     const [currentMonth, setCurrentMonth] = useState(today);
+
     const [crossFade, setCrossFade] = useState(0);
     const [mouseOver, setMouseOver] = useState<Date[]>([])
-
+    
     useEffect(() => {
         const handleMouseUp = () => {
             setIsMouseDown(false);
@@ -63,6 +64,19 @@ const DaySelector: React.FC<Props> = (props) => {
             document.removeEventListener('mouseup', handleMouseUp);
         };
     }, []);
+
+
+
+
+
+    const { dataIds, calenderType, weekDays, dates, startTime, endTime } = props;
+
+    //error handeling for data
+    if (dataIds === undefined) {
+        return (<h1>Broken Event</h1>)
+    }
+    
+    const totalDays: number = dataIds.length
 
     const WeeklyCalendar = () => {
 
