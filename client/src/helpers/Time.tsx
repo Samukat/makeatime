@@ -65,7 +65,7 @@ const Time = class {
     }
 
     public count_intervals(time_interval:number) {
-        return Math.floor(this.getTotalMinutes/time_interval) + 1;
+        return Math.floor(this.getTotalMinutes/time_interval);
     }
 
     public get getLength(){

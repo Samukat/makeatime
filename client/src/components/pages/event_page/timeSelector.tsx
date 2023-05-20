@@ -14,7 +14,7 @@ const time_interval = 15;
 const TimeSelector:React.FC<Props> = (props) => {
     function createButtonArray(startTimeOBJ:InstanceType<typeof Time>, endTimeOBJ:InstanceType<typeof Time>, time_interval:number){
         const elapsed_time = startTimeOBJ.interval(endTimeOBJ)
-        const total_btns = elapsed_time.count_intervals(time_interval);
+        const total_btns = elapsed_time.count_intervals(time_interval) + 1;
         
         console.log(elapsed_time, startTimeOBJ, endTimeOBJ);
         const buttons: {index:number, time:InstanceType<typeof Time>}[] = []
