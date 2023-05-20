@@ -45,7 +45,10 @@ const Time = class {
         const time2Date:Date = (time2 === undefined)?this.time_as_date:time2.time_as_date;
         
         const hours = differenceInHours(time1.time_as_date, time2Date);
-        const mins = differenceInMinutes(time1.time_as_date, time2Date);
+        
+        var mins = differenceInMinutes(time1.time_as_date, time2Date);
+        mins -= hours*60;
+
         return new Time(undefined,hours,mins);
     }
 
@@ -62,7 +65,7 @@ const Time = class {
     }
 
     public count_intervals(time_interval:number) {
-        return Math.floor(this.getTotalMinutes/time_interval);
+        return Math.floor(this.getTotalMinutes/time_interval) + 1;
     }
 
     public get getLength(){
