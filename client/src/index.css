@@ -3,12 +3,22 @@
   --Dark-Green: #164A41;
   --Medium-Green: #4D774E;
   --Light-Green: #9DC88D;
+
   --Natural-Yellow: #F1B24A;
   --White: #FFFFFF;
-  --Dark-Purple: #5c1bff;
-  --Medium-Purple: #713fef;
-  --Light-Purple: #9a7aeb;
 
+  /*Atlassian Colours*/
+  --Atlassian-Dark-Blue: #172B4D;
+  --Atlassian-Greyish-Blue: #344563;
+  --Atlassian-Dark-Deep-Blue: #275396;
+  --Atlassian-Deep-Blue: #0052CC;
+
+  /*Creme Scheme*/
+  --White-Creme: #EDEDE9;
+  --Grey-Creme: #EDEDE9;
+  --Light-Creme: #F5EBE0;
+  --Dark-Creme: #E3D5CA;
+  --Brown-Creme: #D5BDAF;
 
   /* blue scheme */
   --Dark-Blue: #274472;
@@ -17,10 +27,10 @@
   --Baby-Blue: #C3E0E5;
 
   /* main scheme */
-  --Main-Colour: var(--Medium-Purple);
-  --Secondary-Colour: var(--Light-Purple);
-  --Highlight-Colour: var(--Medium-Purple);
-  --Tertiary-color: var(--Dark-Green);
+  --Main-Colour: var(--Brown-Creme);
+  --Secondary-Colour: var(--Light-Creme);
+  --Highlight-Colour: var(--Brown-Creme);
+  --Tertiary-color: var(--Brown-Creme);
 }
 
 body {
