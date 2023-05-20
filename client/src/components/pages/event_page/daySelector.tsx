@@ -88,6 +88,9 @@ const DaySelector: React.FC<Props> = (props) => {
                 setMouseOver(mouseOver => [...mouseOver, week[i]])
             }
         }
+        const handleMouseLeave = () => {
+            setMouseOver([])
+        }
 
 
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -125,7 +128,9 @@ const DaySelector: React.FC<Props> = (props) => {
                                 selectedDays.some((value: Date) => { return isEqual(date, value) }) && 'selected',
                                 selectedDays.some((value: Date) => { return isEqual(addDays(date, 1), value) }) && selectedDays.some((value: Date) => { return isEqual(date, value) }) && 'onRight',
                                 selectedDays.some((value: Date) => { return isEqual(addDays(date, -1), value) }) && selectedDays.some((value: Date) => { return isEqual(date, value) }) && 'onLeft'
-                            )}>
+                            )}
+                                onMouseLeave={() => handleMouseLeave()}
+                            >
                                 <button
                                     onMouseEnter={() => { if (isMouseDown) { handleSelectDay(date) } }}
                                     onMouseDown={() => handleSelectDay(date)}
