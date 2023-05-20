@@ -5,14 +5,16 @@ const Time = class {
 
 
     public constructor(time_int?:number, hours?:number, minutes?:number) {
-        console.log(time_int, hours, minutes)
+        
         if ((time_int && hours) || (hours && minutes)) {
             throw Error("Bad input")
         }
 
-        if (time_int) {
-            const hours = Math.floor(time_int/100);
-            const minutes = time_int%100;
+        if (time_int != undefined) {
+            
+            hours = Math.floor(time_int/100);
+            minutes = time_int%100;
+            
         }
 
         const currentDate = new Date();
@@ -30,8 +32,6 @@ const Time = class {
     }
 
     public get time_as_int() {
-
-        console.log(this.time_as_date);
 
         const time_int:number = (
             this.time_as_date.getHours() * 100 
