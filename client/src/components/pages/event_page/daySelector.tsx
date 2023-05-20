@@ -65,10 +65,6 @@ const DaySelector: React.FC<Props> = (props) => {
         };
     }, []);
 
-
-
-
-
     const { dataIds, calenderType, weekDays, dates, startTime, endTime } = props;
 
     //error handeling for data
@@ -79,8 +75,6 @@ const DaySelector: React.FC<Props> = (props) => {
     const totalDays: number = dataIds.length
 
     const WeeklyCalendar = () => {
-
-
         return (
             <>
                 <div className='weekly-calendar-container'>
@@ -96,9 +90,51 @@ const DaySelector: React.FC<Props> = (props) => {
         )
     }
 
+    const DayHeader:React.FC<{calenderType:number, weekDays: string[], dates: string[]}> = (dayInfo) => {
+        
+
+        if (calenderType==0) {
+            
+            const dayDates:Date[] = dayInfo.dates.map((day: string) => {
+                return new Date(day)
+            })
 
 
+            return(
+                <>
+                    {dayDates.map((day:Date)=>(
+                        <div className='day-header'>
+                            <p className='date'>
+                                {format(day, 'dd / MM / yyyy')}
+                            </p>
+                            <p className='day'>
+                                {daysOfWeek[day.getDay()]}
+                            </p>
+                        </div>                    
+                    ))}
 
+                </>
+            )
+        } 
+        
+        if (calenderType==1) {
+            return(
+                <>
+                    {weekDays.map((day:string)=>(
+                        <div className='day-header'>
+                            <p>
+                                {daysOfWeek[Number(day)]}
+                            </p>
+                        </div>                    
+                    ))}
+                </>
+            )
+        }
+
+        throw new Error("calenderType is wrong");
+    }
+
+    // MAKE THIS A COMponent rather then just copy past....
     if (calenderType == 0) {
         const handleSelectDay = (day: Date) => {
             if (selectedDays.some((value: Date) => isEqual(day, value))) {
@@ -131,8 +167,26 @@ const DaySelector: React.FC<Props> = (props) => {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
+
         return (
             <>
+                <div className={props.className}>
+                <div className='day-selector' style={{gridTemplateColumns: `repeat(${totalDays}, 1fr)`}}>
+                    <DayHeader calenderType={calenderType} weekDays={weekDays} dates={dates}/>
+
+                    
+                    {(calenderType==0?dates:weekDays).map((day:string)=>(
+                        <div className='time-selector'>
+                            <p>
+                                This will be the time selector
+                            </p>
+                            <TimeSelector startTime={startTime} endTime={endTime}/>
+                        </div>                    
+                    ))}
+
+                </div>
+                </div>
+            
                 <WeeklyCalendar />
                 <div className='calendar-section'>
                     <div className='month-calendar-cont'>
@@ -184,6 +238,9 @@ const DaySelector: React.FC<Props> = (props) => {
         )
     }
 
+
+
+    ///WHYYY IS THIS HERER!!!!! WHAT IS THIS IS
     else if (calenderType == 1) {
         return (
             <>
