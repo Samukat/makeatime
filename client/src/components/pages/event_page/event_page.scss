@@ -1,12 +1,19 @@
+.event-title {
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
 .month-calendar-cont {
     display: flex;
     flex-direction: row;
     justify-content: right;
     align-items: baseline;
-    margin-top: 100px;
 
     p {
         margin-left: 10px;
+        font-weight: bolder;
     }
 
     button {
@@ -44,4 +51,15 @@
     .button-on-hover {
         background-color: rgba(66, 66, 66, 0.137) !important;
     }
+}
+
+
+.weekly-calendar-container {
+    display: flex;
+    position: relative;
+    justify-content: left;
+}
+
+.day-titles {
+    margin-right: 30px;
 }

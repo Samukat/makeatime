@@ -64,6 +64,27 @@ const DaySelector: React.FC<Props> = (props) => {
         };
     }, []);
 
+    const WeeklyCalendar = () => {
+
+
+        return (
+            <>
+                <div className='weekly-calendar-container'>
+                    <p className='day-titles'>Sunday</p>
+                    <p className='day-titles'>Monday</p>
+                    <p className='day-titles'>Tuesday</p>
+                    <p className='day-titles'>Wednesday</p>
+                    <p className='day-titles'>Thursday</p>
+                    <p className='day-titles'>Friday</p>
+                    <p className='day-titles'>Saturday</p>
+                </div>
+            </>
+        )
+    }
+
+
+
+
     if (calenderType == 0) {
         const handleSelectDay = (day: Date) => {
             if (selectedDays.some((value: Date) => isEqual(day, value))) {
@@ -98,6 +119,7 @@ const DaySelector: React.FC<Props> = (props) => {
         ];
         return (
             <>
+                <WeeklyCalendar />
                 <div className='calendar-section'>
                     <div className='month-calendar-cont'>
                         <p className='month-header'> {monthNames[currentMonth.getMonth()]}</p>

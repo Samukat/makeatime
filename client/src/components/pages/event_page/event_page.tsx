@@ -18,9 +18,7 @@ export default function Event() {
 
     return (
         <div className='event'>
-            <h2>Welcome to the makeatime event page</h2>
-            <p>This is a paragraph of text ...</p>
-            <h1> Event: {data.eventName}</h1>
+            <h1 className='event-title'> Event: {data.eventName}</h1>
 
             <DaySelector
                 calenderType={data.calenderType}
