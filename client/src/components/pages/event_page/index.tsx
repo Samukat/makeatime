@@ -19,7 +19,6 @@ export default function Event() {
     //console.log((data.calenderType==0?data.dates:data.weekDays));
     const startTime = new Time(data.startTime);
     const endTime = new Time(data.endTime);
-    console.log(data.startTime, data.endTime);
 
     return (
         <div className='event'>

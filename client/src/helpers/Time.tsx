@@ -1,12 +1,12 @@
-import { differenceInMinutes, differenceInHours} from "date-fns";
+import { differenceInMinutes, differenceInHours, addMinutes, min} from "date-fns";
 
 const Time = class {
     private time_as_date: Date;
+    private time_length?: number;
 
 
-    public constructor(time_int?:number, hours?:number, minutes?:number) {
-        
-        if ((time_int && hours) || (hours && minutes)) {
+    public constructor(time_int?:number, hours?:number, minutes?:number, length?:number) {
+        if ((time_int && hours) || (hours && !minutes)) {
             throw Error("Bad input")
         }
 
@@ -27,7 +27,7 @@ const Time = class {
             minutes
         );
 
-
+        this.time_length = length;
         return;
     }
 
@@ -49,12 +49,44 @@ const Time = class {
         return new Time(undefined,hours,mins);
     }
 
-    public get getMinutes() {
+    public get getExtraMinutes() {
         return this.time_as_date.getMinutes();
     }
 
     public get getHours() {
         return this.time_as_date.getHours();
+    }
+
+    public get getTotalMinutes() {
+        return this.getHours*60 + this.getExtraMinutes;
+    }
+
+    public count_intervals(time_interval:number) {
+        return Math.floor(this.getTotalMinutes/time_interval);
+    }
+
+    public get getLength(){
+        return this.time_length;
+    }
+
+    public addMinutes(to_add: number) {
+        this.time_as_date = addMinutes(this.time_as_date, to_add);
+        return this;
+    }
+
+    public get endTime(){
+        var endDate:Date;
+        if (this.getLength != undefined) {
+            endDate = addMinutes(this.time_as_date, this.getLength)
+            return new Time(undefined, endDate.getHours(), endDate.getMinutes()).time_as_int;
+        }
+
+        return this.time_as_int;
+
+    }
+
+    public get timeString() {
+        return `${this.getHours==0?"12":(this.getHours>=13?this.getHours-12:this.getHours)}:${this.getExtraMinutes<10?"0":""}${this.getExtraMinutes} ${this.getHours>=12?"pm":"am"}`
     }
 };
 
