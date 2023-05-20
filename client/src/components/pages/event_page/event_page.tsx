@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
-
-// import Navbar from 'react-bootstrap/Navbar';
-// import Container from 'react-bootstrap/Container';
-import './style.scss';
+import './event_page.scss';
 import { LoaderFunctionArgs, useLoaderData, useParams } from 'react-router-dom';
 import DaySelector from './daySelector';
 import Time from '../../../helpers/Time';
 
 export default function Event() {
-    
-    const {id} = useParams();
+
+    const { id } = useParams();
 
     const eventdata = useLoaderData();
     var data = JSON.parse(JSON.stringify(eventdata));
@@ -26,24 +22,24 @@ export default function Event() {
             <p>This is a paragraph of text ...</p>
             <h1> Event: {data.eventName}</h1>
 
-            <DaySelector 
+            <DaySelector
                 calenderType={data.calenderType}
                 weekDays={data.weekDays}
                 dates={data.dates}
-                startTime={startTime} 
-                endTime={endTime}  
+                startTime={startTime}
+                endTime={endTime}
                 dataIds={data.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
                     //null
                     //wip
-                } }           
+                }}
             ></DaySelector>
-            
+
         </div>
     )
 }
 
-export const eventLoader = async ({params}:LoaderFunctionArgs) => {
+export const eventLoader = async ({ params }: LoaderFunctionArgs) => {
     const res = await fetch(`http://localhost:4000/view/${params.id}`).then(data => data.json());
     return res
 }

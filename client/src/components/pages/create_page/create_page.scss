@@ -1,8 +1,4 @@
-
-.page{
-    //enter stuff here for the entire page
-}
-.blur{
+.blur {
     top: 0;
     left: 0;
     width: 100%;
@@ -11,78 +7,51 @@
     z-index: 9999999;
 }
 
-.event-form{
-    .name-box{
+.event-form {
+    .name-box {
         margin-bottom: 50px;
         margin-left: auto;
         margin-right: auto;
     }
-    .input-boxes{
+
+    .input-boxes {
         display: flex;
         //flex-direction: row;
         justify-content: center;
         gap: 10%;
         flex-wrap: wrap;
         row-gap: 150px;
-        .inner-box{
+
+        .inner-box {
             display: block;
             flex: 1 1 100px;
             min-width: 320px;
-            
+
         }
     }
-    .name-box{
+
+    .name-box {
         width: auto;
     }
 }
 
-.banner{
+.banner {
     height: 10px;
-    background-color: Secondary-Color !important;
+    background-color: var(Secondary-Color) !important;
 }
-// .event-form{
-//     display: flex;
-//     background-color: grey;
-//     justify-content: space-between;
-//     align-content: center;
-//     flex-direction: column;
-    
 
-//     .input-boxes {
-//         display: flex;
-//         flex-direction: row;
-//         color: blue;
-//         align-self: center;
-//         justify-self: space-between;
-//     }
-
-//     .left-box{
-//         background-color: rgb(78, 63, 56);
-//         flex-grow: 1;
-//     }
-//     .right-box{
-//         background-color: coral;
-        
-//     }
-// }
-
-
-// var(--main-colour)
-
-// 
-// Calender 
-// 
-.selector{
+.selector {
     display: flex;
     flex-wrap: wrap;
 }
-.day_selector_div{
+
+.day_selector_div {
     // padding: 5px;
-    
-    .day_selector_button{
+
+    .day_selector_button {
         background-color: rgba(66, 66, 66, 0.062);
         // color: rgb(31, 31, 31);
-        border: 0;     
+        border: 0;
         // border: 1;
         // border-style: groove;
         border-radius: 3px;
@@ -95,70 +64,79 @@
         transition: all 0.3s;
     }
 
-    .day_selector_button.selected{
-        background-color: rgba(#F1B24A, 0.45)!important;
+    .day_selector_button.selected {
+        background-color: rgba(#F1B24A, 0.45) !important;
     }
-    @media(hover: hover) and (pointer: fine){
-        .day_selector_button:hover{
+
+    @media(hover: hover) and (pointer: fine) {
+        .day_selector_button:hover {
             background-color: rgba(66, 66, 66, 0.15);
         }
 
-        .day_selector_button.selected:hover{
+        .day_selector_button.selected:hover {
             background-color: #cccaf5;
         }
-    }    
+    }
 }
 
-.calender-cont{
+.calender-cont {
     display: flex;
     // justify-content: right;
-    
-    p{
+
+    p {
         justify-self: left;
         margin-right: 20px;
     }
-    button{   
-        border: 0;  
+
+    button {
+        border: 0;
     }
-    .btnleft{
+
+    .btnleft {
         margin-left: auto;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         transition: background-color 0.2s ease;
     }
-    .btnleft:hover, .btnright:hover{
-        background-color:rgb(146, 146, 146, 0.3)
+
+    .btnleft:hover,
+    .btnright:hover {
+        background-color: rgb(146, 146, 146, 0.3)
     }
-    .btnleft:active, .btnright:active{
+
+    .btnleft:active,
+    .btnright:active {
         background-color: #dbdafd !important;
     }
-    .btnright{
+
+    .btnright {
         margin-right: 10px;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         transition: background-color 0.2s ease;
     }
 }
-.calender-days{
+
+.calender-days {
     display: grid;
     grid-template-columns: repeat(7, 50px); //fix later
     flex-wrap: wrap;
 
-    .dayTitles{
+    .dayTitles {
         color: gray;
         text-align: center;
     }
-    
-    .day{
+
+    .day {
         margin-top: 5px;
         border: 0;
         border-bottom: 1px;
-        border-style:solid;
+        border-style: solid;
         border-color: rgba(119, 119, 119, 0.301);
         display: flex;
         justify-content: center;
 
-        button{
+        button {
             border: 0;
             margin-bottom: 5px;
             border-radius: 10px;
@@ -170,53 +148,55 @@
             transition: all 0.1s;
         }
 
-       
+
     }
 
-    @media(hover: hover) and (pointer: fine){
-        .day:not(.selected):hover button{
+    @media(hover: hover) and (pointer: fine) {
+        .day:not(.selected):hover button {
             background-color: rgba(66, 66, 66, 0.137) !important;
         }
     }
+
     // All conditional styling
-    .today{
-        button{
+    .today {
+        button {
             color: var(--Highlight-Colour);
         }
     }
 
-    .diffMonth{
-        button{
+    .diffMonth {
+        button {
             color: rgb(146, 146, 146);
         }
     }
-    // 
 
-    .dayTitles{
+    // 
+    .dayTitles {
         margin: 0px;
         padding: 0;
     }
 
-    .selected button{
-        background-color: rgba(#F1B24A, 0.45);
+    .selected button {
+        background-color: var(--Light-Creme);
     }
 
-    .onLeft button{
+    .onLeft button {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
-    .onRight button{
+
+    .onRight button {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
 
 }
 
-.calender-days.crossFadeLeft{
+.calender-days.crossFadeLeft {
     animation: fade-in-keyframes-left 0.2s;
 }
 
-.calender-days.crossFadeRight{
+.calender-days.crossFadeRight {
     animation: fade-in-keyframes-right 0.2s;
 }
 
@@ -224,42 +204,48 @@
     from {
         opacity: 1;
     }
-    5% {opacity: 0.1;
+
+    5% {
+        opacity: 0.1;
         transform: translate(50px, 0); //fix
     }
+
     to {
         opacity: 1;
-        
+
     }
 }
+
 @keyframes fade-in-keyframes-right {
     from {
         opacity: 1;
     }
-    5% {opacity: 0.1;
+
+    5% {
+        opacity: 0.1;
         transform: translate(-50px, 0); //fix
     }
+
     to {
         opacity: 1;
-        
+
     }
 }
 
 //buttons
-.bottom-buttons{
+.bottom-buttons {
     margin-top: 100px;
     display: flex;
     justify-content: center;
     gap: 5%;
 
-    
+
 }
 
 
 
-@media(hover: hover) and (pointer: fine){
-    .clear-button:hover{
+@media(hover: hover) and (pointer: fine) {
+    .clear-button:hover {
         background-color: rgb(255, 196, 4) !important;
     }
 }
-

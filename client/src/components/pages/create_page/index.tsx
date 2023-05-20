@@ -3,10 +3,7 @@ import { Form, Container, Button, SplitButton } from 'react-bootstrap';
 import DaySelector from './daySelector';
 import Select from 'react-select';
 import Loader from '../../loader/loader'
-
-// import Navbar from 'react-bootstrap/Navbar';
-// import Container from 'react-bootstrap/Container';
-import './style.scss';
+import './create_page.scss';
 import { async } from 'q';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +24,7 @@ export default function Create() {
     //create
     const navigate = useNavigate();
     const handleCreate = () => {
-        
+
         let name = eventNameRef.current?.value
         console.log(name)
         if (name?.length == 0) {
@@ -94,7 +91,7 @@ export default function Create() {
 
     return (
         <>
-            <div className={(showLoader == true) ? 'blur':'page'}>
+            <div className={(showLoader == true) ? 'blur' : 'page'}>
                 <div className='event' >
                     <h2>Create an Event</h2>
                 </div>
@@ -173,7 +170,7 @@ export default function Create() {
                     </p>
                 ))}
             </div>
-            <Loader show={showLoader}/>
+            <Loader show={showLoader} />
         </>
     )
 }
