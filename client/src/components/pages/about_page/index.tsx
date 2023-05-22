@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Loader from '../../loader/loader'
 
-
-// import Navbar from 'react-bootstrap/Navbar';
-// import Container from 'react-bootstrap/Container';
 
 
 export default function About() {
