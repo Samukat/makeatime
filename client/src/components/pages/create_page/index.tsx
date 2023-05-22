@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import DaySelector from './daySelector';
+import DaySelector from './daySelectorCreate';
 import Select from 'react-select';
 import Loader from '../../loader/loader'
 import './index.scss';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import { LoaderFunctionArgs, useLoaderData, useParams } from 'react-router-dom';
-import DaySelector from './daySelector';
+import DaySelector from './daySelectorView';
 import Time from '../../../helpers/Time';
 
 export default function Event() {
