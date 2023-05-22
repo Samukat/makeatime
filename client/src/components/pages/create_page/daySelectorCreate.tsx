@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Calendar from '../../calendar/index'
+import classNames from 'classnames';
 
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
@@ -77,13 +78,13 @@ const DaySelector: React.FC<Props> = (props) => { //on sellect is a prop functio
     else if (props.input_type === 0) {
 
         return (
-            <>
+            <div className={props.className}>
                 <Calendar
                     onSelect={(days: string[]) => { setSelectedDateDays(selectedDateDays => days); }}
                     selectType='day'
                     className='create'
                 />
-            </>
+            </div>
         )
     } else {
         return (

@@ -128,3 +128,43 @@
         align-items: center;
     }
 }
+
+.crossFadeLeft {
+    animation: fade-in-keyframes-left 0.2s;
+}
+
+.crossFadeRight {
+    animation: fade-in-keyframes-right 0.2s;
+}
+
+@keyframes fade-in-keyframes-left {
+    from {
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 0.1;
+        transform: translate(50px, 0); //fix
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}
+
+@keyframes fade-in-keyframes-right {
+    from {
+        opacity: 1;
+    }
+
+    5% {
+        opacity: 0.1;
+        transform: translate(-50px, 0); //fix
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}
