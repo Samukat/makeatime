@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './event_page.scss';
+import './index.scss';
 import { LoaderFunctionArgs, useLoaderData, useParams } from 'react-router-dom';
 import DaySelector from './daySelector';
 import Time from '../../../helpers/Time';
@@ -12,7 +12,7 @@ export default function Event() {
     var data = JSON.parse(JSON.stringify(eventdata));
 
 
-    //console.log((data.calenderType==0?data.dates:data.weekDays));
+    //console.log((data.calendarType==0?data.dates:data.weekDays));
     const startTime = new Time(data.event.startTime);
     const endTime = new Time(data.event.endTime);
 
@@ -21,7 +21,7 @@ export default function Event() {
             <h1 className='event-title'> Event: {data.event.eventName}</h1>
 
             <DaySelector
-                calenderType={data.event.calenderType}
+                calendarType={data.event.calendarType}
                 weekDays={data.event.weekDays}
                 dates={data.event.dates}
                 startTime={startTime}
@@ -31,7 +31,7 @@ export default function Event() {
                     //null
                     //wip
                 }}
-                dayData = {data.days}
+                dayData={data.days}
             ></DaySelector>
 
         </div>

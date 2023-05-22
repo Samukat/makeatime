@@ -4,12 +4,12 @@ import './App.css';
 
 import Home from './components/pages/home_page';
 import About from './components/pages/about_page';
-import Event from './components/pages/event_page/event_page';
+import Event from './components/pages/event_page';
 import Create from './components/pages/create_page';
 
 //layouts
 import Layout from './components/layout';
-import { eventLoader } from './components/pages/event_page/event_page';
+import { eventLoader } from './components/pages/event_page';
 
 
 

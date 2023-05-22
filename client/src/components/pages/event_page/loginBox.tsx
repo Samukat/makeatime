@@ -1,8 +1,4 @@
-import { error } from 'console';
-import { errorMonitor } from 'events';
 import React, { useState, useEffect, Component, useRef } from 'react';
-import { Interface } from 'readline';
-import {format} from 'date-fns';
 
 
 interface Props {
@@ -11,12 +7,12 @@ interface Props {
 }
 
 
-const LoginBox:React.FC<Props> = (props) => {
-    const {} = props;
- 
-    return(
+const LoginBox: React.FC<Props> = (props) => {
+    const { } = props;
+
+    return (
         <div className={props.className}>
-     
+
         </div>
     )
 }
