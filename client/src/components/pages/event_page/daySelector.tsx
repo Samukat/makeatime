@@ -152,6 +152,8 @@ const DaySelector: React.FC<Props> = (props) => {
             }
         };
 
+
+
         const handleMouseOver = (day: Date) => {
             const week = getWeekRange(day);
             setMouseOver([])
@@ -187,6 +189,8 @@ const DaySelector: React.FC<Props> = (props) => {
                 </div>
                 </div>
             
+                
+
                 <WeeklyCalendar />
                 <div className='calendar-section'>
                     <div className='month-calendar-cont'>
