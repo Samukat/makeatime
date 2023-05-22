@@ -13,25 +13,25 @@ export default function Event() {
 
 
     //console.log((data.calendarType==0?data.dates:data.weekDays));
-    const startTime = new Time(data.event.startTime);
-    const endTime = new Time(data.event.endTime);
+    const startTime = new Time(data.startTime);
+    const endTime = new Time(data.endTime);
 
     return (
         <div className='event'>
-            <h1 className='event-title'> Event: {data.event.eventName}</h1>
+            <h1 className='event-title'> Event: {data.eventName}</h1>
 
             <DaySelector
-                calendarType={data.event.calendarType}
-                weekDays={data.event.weekDays}
-                dates={data.event.dates}
+                calendarType={data.calendarType}
+                weekDays={data.weekDays}
+                dates={data.dates}
                 startTime={startTime}
                 endTime={endTime}
-                dataIds={data.event.ids}
+                dataIds={data.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
                     //null
                     //wip
                 }}
-                dayData={data.days}
+                dayData={data.selectedTimes}
             ></DaySelector>
 
         </div>

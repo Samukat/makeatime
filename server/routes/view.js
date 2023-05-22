@@ -13,12 +13,12 @@ router.get("/:id", (req, res) => {
             return;
         }
 
-        
+
 
         //THIS WAS REALLY LAZY AND NEEDS TO BE REWRITTEN
         try {
             let data = JSON.parse(JSON.stringify(result[0]));
-            
+
             //convert all lists to lists..
             for (const [key, value] of Object.entries(data)) {
                 try { //kinda stupid ngl
@@ -26,7 +26,7 @@ router.get("/:id", (req, res) => {
                 } catch (error) {
                     //do nothing
                 }
-                
+
             }
 
             DBFunctions.getTimesById(req.params.id, (err, result) => {
@@ -34,14 +34,14 @@ router.get("/:id", (req, res) => {
                     res.status(400).json(err);
                     return;
                 }
-        
-                
-                res.status(200).json({event: data, days: result});
+
+
+                res.status(200).json({ ...data, selectedTimes: result });
                 return;
             })
 
-            
-        } catch  {
+
+        } catch {
             res.status(400).json("unable to fetch");
             return;
         }
@@ -55,7 +55,7 @@ router.get("/days/:id", (req, res) => {
             return;
         }
 
-        
+
         res.status(200).json(result);
         return;
     })
@@ -69,12 +69,12 @@ router.get("/event/:id", (req, res) => {
             return;
         }
 
-        
+
 
         //THIS WAS REALLY LAZY AND NEEDS TO BE REWRITTEN
         try {
             let data = JSON.parse(JSON.stringify(result[0]));
-            
+
             //convert all lists to lists..
             for (const [key, value] of Object.entries(data)) {
                 try { //kinda stupid ngl
@@ -82,12 +82,12 @@ router.get("/event/:id", (req, res) => {
                 } catch (error) {
                     //do nothing
                 }
-                
+
             }
 
             res.status(200).json(data);
             return;
-        } catch  {
+        } catch {
             res.status(400).json("unable to fetch");
             return;
         }
