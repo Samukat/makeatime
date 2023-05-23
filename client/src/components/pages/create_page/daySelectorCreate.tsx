@@ -15,23 +15,26 @@ const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const DaySelector = (props: Props, ref: ForwardedRef<any>) => { //on sellect is a prop function
     const calendar = useRef<any>(null);
+    const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
+    const [isMouseDown, setIsMouseDown] = useState(false);
+    const [selectedDateDays, setSelectedDateDays] = useState<string[]>([]);
 
     useImperativeHandle(
         ref,
         () => {
             return {
                 clear: () => {
-                    if (calendar.current) {
+                    if (props.input_type == 0 && calendar.current) {
                         calendar.current.clear();
+                    } else if (props.input_type == 1) {
+                        setSelectedWeekDays([]);
                     }
                 }
             }
         }
     );
 
-    const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
-    const [isMouseDown, setIsMouseDown] = useState(false);
-    const [selectedDateDays, setSelectedDateDays] = useState<string[]>([]);
+
 
 
 

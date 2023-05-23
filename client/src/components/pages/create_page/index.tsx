@@ -75,9 +75,7 @@ export default function Create() {
     }
 
     const handleClear = () => {
-        if (daySelectorOBJ.current) {
-            daySelectorOBJ.current.clear();
-        }
+        daySelectorOBJ.current.clear();
     }
 
     function timeOptions(start_time: number, end_time: number = 2400) {
