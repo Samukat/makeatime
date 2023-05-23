@@ -32,6 +32,7 @@ export default function Event() {
                     //wip
                 }}
                 dayData={data.selectedTimes}
+                className="DaySelector"
             ></DaySelector>
 
         </div>

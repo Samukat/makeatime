@@ -7,7 +7,7 @@ import classNames from 'classnames';
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
     selectType: string,
-    className: string
+    className?: string
 }
 
 function getMonthRange(dayInMonth: Date) {
