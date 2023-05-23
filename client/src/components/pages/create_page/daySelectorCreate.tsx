@@ -21,7 +21,6 @@ const DaySelector: React.FC<Props> = (props) => { //on sellect is a prop functio
     //return when changed
     useEffect(() => {
         props.onSelect(selectedWeekDays)
-
     }, [selectedWeekDays])
 
 

@@ -14,6 +14,7 @@ export default function Create() {
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
     const [showLoader, setShowLoader] = useState(false);
     const eventNameRef = useRef<HTMLInputElement>(null);
+    const [clearData, setClearData] = useState(false)
 
     //time things
     const [start_time, setStartTime] = useState(default_start);
@@ -70,6 +71,9 @@ export default function Create() {
             });
     }
 
+    const handleClear = () => {
+        setSelectedDays([]);
+    }
 
     function timeOptions(start_time: number, end_time: number = 2400) {
         const times: { value: string; label: string; }[] = [];
@@ -158,7 +162,7 @@ export default function Create() {
                     </div>
                     <div className='bottom-buttons' >
                         <Button className='submit-btn' variant={selectedDays.length > 0 ? "outline-success" : "outline-warning"} onClick={handleCreate}>Create!</Button>{' '}
-                        <Button className='clear-button' variant='outline-warning'>Clear</Button>
+                        <Button className='clear-button' variant='outline-warning' onClick={handleClear}>Clear</Button>
                     </div>
                 </div>
                 {(selectedDays.length > 0) && selectedDays.map((day) => (
