@@ -98,8 +98,8 @@ const Calendar = (props: Props, ref: ForwardedRef<any>) => {
         "July", "August", "September", "October", "November", "December"];
     return (
         <>
-            <div className={`${props.className}-calendar-section`}>
-                <div className={`${props.className}-calendar-cont`}>
+            <div className={props.className}>
+                <div className="calendar-cont">
                     <div className='month-year'>{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</div>
                     <button className='btnleft' onClick={() => {
                         setCurrentMonth(addMonths(currentMonth, -1))
@@ -110,7 +110,7 @@ const Calendar = (props: Props, ref: ForwardedRef<any>) => {
                         setCrossFade(1)
                     }}> {">"} </button>
                 </div>
-                <div className={classNames(`${props.className}-calendar-days`, crossFade === 1 && "crossFadeLeft", crossFade === -1 && "crossFadeRight")} onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} onAnimationEnd={() => setCrossFade(0)}>
+                <div className={classNames("calendar-days", crossFade === 1 && "crossFadeLeft", crossFade === -1 && "crossFadeRight")} onMouseDown={() => setIsMouseDown(true)} onMouseLeave={() => setIsMouseDown(false)} onAnimationEnd={() => setCrossFade(0)}>
                     <p className='dayTitles'>S</p>
                     <p className='dayTitles'>M</p>
                     <p className='dayTitles'>T</p>

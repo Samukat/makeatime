@@ -5,14 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
 import './index.scss'
 import Calendar from '../../calendar/index'
-import TimeSelector from './timeSelector';
+import { TimeLables, TimeSelector } from './timeSelector';
 
 
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 
-const DayHeader: React.FC<{ calenderType: number, weekDays: string[], dates: string[] }> = (dayInfo) => {
+//returns all the headers of all the days
+const DayHeaders: React.FC<{ calenderType: number, weekDays: string[], dates: string[] }> = (dayInfo) => {
     //If we are working with specific dates
     if (dayInfo.calenderType == 0) {
         const dayDates: Date[] = dayInfo.dates.map((day: string) => {
@@ -21,6 +22,14 @@ const DayHeader: React.FC<{ calenderType: number, weekDays: string[], dates: str
 
         return (
             <>
+                <div className='day-header'>
+                    <p>‏</p>
+                    {/* HUGE HACK RIGHT THERE */}
+                    <p>
+                        Times
+                    </p>
+                </div>
+
                 {dayDates.map((day: Date) => (
                     <div className='day-header'>
                         <p className='date'>
@@ -40,6 +49,11 @@ const DayHeader: React.FC<{ calenderType: number, weekDays: string[], dates: str
     if (dayInfo.calenderType == 1) {
         return (
             <>
+                <div className='day-header'>
+                    <p>
+                        Times
+                    </p>
+                </div>
                 {dayInfo.weekDays.map((day: string) => (
                     <div className='day-header'>
                         <p>
@@ -53,6 +67,8 @@ const DayHeader: React.FC<{ calenderType: number, weekDays: string[], dates: str
 
     throw new Error("calenderType is wrong");
 }
+
+
 
 interface Props {
     calendarType: number,
@@ -74,12 +90,15 @@ const DaySelector: React.FC<Props> = (props) => {
     return (
         <div className={props.className}>
 
-            <div className='Times'>
+            <div className='timeSelectors' style={{ gridTemplateColumns: `repeat(${props.dataIds.length + 1}, 120px)` }}>
+                <DayHeaders calenderType={props.calendarType} weekDays={props.weekDays} dates={props.dates} />
+
+                <div className='singleSelector timeLabels'>
+                    <TimeLables startTime={props.startTime} endTime={props.endTime} onHR={true} />
+                </div>
+
                 {(props.calendarType == 0 ? props.dates : props.weekDays).map((day: string) => (
-                    <div className='time-selector'>
-                        <p>
-                            This will be the time selector
-                        </p>
+                    <div className='singleSelector'>
                         <TimeSelector startTime={props.startTime} endTime={props.endTime} />
                     </div>
                 ))}
@@ -88,7 +107,7 @@ const DaySelector: React.FC<Props> = (props) => {
             <Calendar
                 onSelect={() => { }}
                 selectType='week'
-                className='event'
+                className='calendar'
             />
         </div>
     )

@@ -1,6 +1,47 @@
-.event-title {
-    position: relative;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+.event {
+    .DaySelector {
+        display: flex;
+
+        .event-title {
+            position: relative;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeSelectors {
+            display: grid;
+            // grid-template-columns: repeat(NUM, 1fr); IN DAYSLECTOR TSX
+
+            .timeLabels {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .time-buttons {
+                height: 10px;
+                width: 80px;
+                margin: 0;
+            }
+        }
+
+
+
+        .calendar {
+            margin-left: auto;
+        }
+
+        @media (max-width:900px) {
+            .calendar {
+                margin-right: auto;
+            }
+        }
+    }
+
+    @media (max-width:900px) {
+        .DaySelector {
+            flex-wrap: wrap;
+        }
+    }
 }

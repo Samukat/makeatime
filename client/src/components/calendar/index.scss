@@ -1,5 +1,4 @@
-.create-calendar-cont,
-.event-calendar-cont {
+.calendar-cont {
     display: flex;
     width: 350px;
 
@@ -33,21 +32,7 @@
 
 }
 
-.event-calendar-section {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    float: right;
-
-    .event-calendar-cont {
-        position: relative;
-    }
-
-}
-
-
-.create-calendar-days,
-.event-calendar-days {
+.calendar-days {
     display: grid;
     grid-template-columns: repeat(7, 50px); //fix later
     flex-wrap: wrap;
@@ -120,13 +105,6 @@
         border-bottom-right-radius: 0;
     }
 
-}
-
-@media (max-width:900px) {
-    .event-calendar-section {
-        float: none;
-        align-items: center;
-    }
 }
 
 .crossFadeLeft {
