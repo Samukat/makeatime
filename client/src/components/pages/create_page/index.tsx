@@ -5,6 +5,7 @@ import Select from 'react-select';
 import Loader from '../../loader/loader'
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
+import { daysInWeek } from 'date-fns';
 
 let default_start = 715;
 let default_end = 2115;
@@ -14,12 +15,14 @@ export default function Create() {
     const [selectedDays, setSelectedDays] = useState<string[]>([]);
     const [showLoader, setShowLoader] = useState(false);
     const eventNameRef = useRef<HTMLInputElement>(null);
-    const [clearData, setClearData] = useState(false)
+    // const [clearData, setClearData] = useState(false)
 
     //time things
     const [start_time, setStartTime] = useState(default_start);
     const [end_time, setEndTime] = useState(default_end);
 
+    //calender
+    const daySelectorOBJ = useRef<any>(null);
 
     //create
     const navigate = useNavigate();
@@ -72,7 +75,9 @@ export default function Create() {
     }
 
     const handleClear = () => {
-        setSelectedDays([]);
+        if (daySelectorOBJ.current) {
+            daySelectorOBJ.current.clear();
+        }
     }
 
     function timeOptions(start_time: number, end_time: number = 2400) {
@@ -138,6 +143,7 @@ export default function Create() {
                                     setSelectedDays(selectedDays => days);
                                 }}
                                 className='selector'
+                                ref={daySelectorOBJ}
                             ></DaySelector>
                         </div>
 

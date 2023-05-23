@@ -1,8 +1,9 @@
 import './index.scss'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ForwardedRef, useImperativeHandle } from 'react';
 import { format, eachDayOfInterval, endOfMonth, startOfMonth, startOfToday, endOfWeek, startOfWeek, isToday, isSameMonth, isEqual, addDays, addMonths } from 'date-fns';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classNames from 'classnames';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
@@ -28,7 +29,15 @@ function getWeekRange(dayInMonth: Date) {
     return days;
 }
 
-const Calendar: React.FC<Props> = (props) => {
+const Calendar = (props: Props, ref: ForwardedRef<any>) => {
+    useImperativeHandle(
+        ref,
+        () => {
+            return { clear: () => setSelectedDateDays([]) }
+        }
+    );
+
+
     let today = startOfToday();
 
     const [selectedDateDays, setSelectedDateDays] = useState<Date[]>([]);
@@ -54,9 +63,12 @@ const Calendar: React.FC<Props> = (props) => {
         props.onSelect(dateString)
     }, [selectedDateDays])
 
-    useEffect(() => {
 
-    })
+
+
+    function clearCal() {
+        setSelectedDateDays([]);
+    }
 
     const handleSelectDay = (day: Date) => {
         if (props.selectType === 'day') {
@@ -130,4 +142,4 @@ const Calendar: React.FC<Props> = (props) => {
     )
 }
 
-export default Calendar;
+export default React.forwardRef(Calendar);

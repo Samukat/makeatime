@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ForwardedRef, useImperativeHandle, useRef } from 'react';
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Calendar from '../../calendar/index'
@@ -13,10 +13,27 @@ interface Props {
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 
-const DaySelector: React.FC<Props> = (props) => { //on sellect is a prop function
+const DaySelector = (props: Props, ref: ForwardedRef<any>) => { //on sellect is a prop function
+    const calendar = useRef<any>(null);
+
+    useImperativeHandle(
+        ref,
+        () => {
+            return {
+                clear: () => {
+                    if (calendar.current) {
+                        calendar.current.clear();
+                    }
+                }
+            }
+        }
+    );
+
     const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
     const [isMouseDown, setIsMouseDown] = useState(false);
     const [selectedDateDays, setSelectedDateDays] = useState<string[]>([]);
+
+
 
     //return when changed
     useEffect(() => {
@@ -82,6 +99,7 @@ const DaySelector: React.FC<Props> = (props) => { //on sellect is a prop functio
                     onSelect={(days: string[]) => { setSelectedDateDays(selectedDateDays => days); }}
                     selectType='day'
                     className='create'
+                    ref={calendar}
                 />
             </div>
         )
@@ -99,4 +117,4 @@ const DaySelector: React.FC<Props> = (props) => { //on sellect is a prop functio
 
 };
 
-export default DaySelector;
+export default React.forwardRef(DaySelector);
