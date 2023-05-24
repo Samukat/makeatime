@@ -2,7 +2,6 @@ import React, { useState, useEffect, ForwardedRef, useImperativeHandle, useRef }
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Calendar from '../../calendar/index'
-import classNames from 'classnames';
 
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
