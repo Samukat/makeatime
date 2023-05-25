@@ -1,4 +1,48 @@
 .event {
+    .view-format-selector {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+
+        .weekly-selector,
+        .daily-selector {
+            width: 50%;
+            height: 30px;
+            border: none;
+        }
+
+        .weekly-selector {
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .daily-selector {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .weekly-selector-unselected,
+        .daily-selector-unselected {
+            background-color: var(--Fourth-Colour);
+        }
+
+        @media(hover: hover) and (pointer: fine) {
+
+            .weekly-selector:hover,
+            .daily-selector:hover {
+                background-color: var(--Secondary-Colour) !important;
+            }
+        }
+
+        .weekly-selector-selected,
+        .daily-selector-selected {
+            background-color: var(--Tertiary-Colour);
+        }
+    }
+
     .DaySelector {
         display: flex;
 

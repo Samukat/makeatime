@@ -30,7 +30,8 @@
   --Main-Colour: var(--Brown-Creme);
   --Secondary-Colour: var(--Light-Creme);
   --Highlight-Colour: var(--Brown-Creme);
-  --Tertiary-color: var(--Light-Creme);
+  --Tertiary-Colour: var(--Dark-Creme);
+  --Fourth-Colour: var(--White-Creme);
 }
 
 body {
