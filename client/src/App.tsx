@@ -6,6 +6,7 @@ import Home from './components/pages/home_page';
 import Contact from './components/pages/contact_page';
 import Event from './components/pages/event_page';
 import Create from './components/pages/create_page';
+import About from './components/pages/about_page';
 
 //layouts
 import Layout from './components/layout';
@@ -20,11 +21,11 @@ const router = createBrowserRouter(
       <Route path="create" element={<Create />} />
 
 
-      <Route path="event" element={<Contact />} />
+      <Route path="event" element={<Event />} />
       <Route path='/event/:id' element={<Event />} loader={eventLoader} /> this is a nested route
 
-
-      <Route path="about" element={<Contact />} />
+      <Route path='about' element={<About />} />
+      <Route path="contact" element={<Contact />} />
       {/* note can create adition layout paths etc */}
     </Route>
   )
