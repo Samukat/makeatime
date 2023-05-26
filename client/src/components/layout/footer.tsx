@@ -12,8 +12,8 @@ export const Footer = () => {
                 <div className='footer-component'>
                     © makeatime 2023
                 </div>
-                <NavLink className='footer-link' to="./about">
-                    About
+                <NavLink className='footer-link' to="./Contact">
+                    Contact Us
                 </NavLink>
                 <div className='footer-component last-comp'>
                     2023
