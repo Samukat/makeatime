@@ -100,7 +100,6 @@ export default function Create() {
                 <div className='event' >
                     <h2>Create an Event</h2>
                 </div>
-                <div className='banner' />
                 <div className='event-form'>
                     <Form.Control className='name-box'
                         placeholder="Event Name"

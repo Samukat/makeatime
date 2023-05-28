@@ -31,8 +31,8 @@
 
         @media(hover: hover) and (pointer: fine) {
 
-            .weekly-selector:hover,
-            .daily-selector:hover {
+            .weekly-selector-unselected:hover,
+            .daily-selector-unselected:hover {
                 background-color: var(--Secondary-Colour) !important;
             }
         }
