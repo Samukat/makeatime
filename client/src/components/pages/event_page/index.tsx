@@ -8,13 +8,13 @@ import classNames from 'classnames'
 export default function Event() {
 
     const [viewFormat, setViewFormat] = useState('weekly');
-    const { id } = useParams();
 
     const eventdata = useLoaderData();
     var data = JSON.parse(JSON.stringify(eventdata));
 
 
     //console.log((data.calendarType==0?data.dates:data.weekDays));
+    console.log(data)
     const startTime = new Time(data.startTime);
     const endTime = new Time(data.endTime);
 
@@ -34,8 +34,6 @@ export default function Event() {
                 endTime={endTime}
                 dataIds={data.ids}
                 onDayChange={(selectedWeekDays: string[]) => {
-                    //null
-                    //wip
                 }}
                 dayData={data.selectedTimes}
                 className="DaySelector"

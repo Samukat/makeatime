@@ -28,14 +28,13 @@
     .btnright:active {
         background-color: #dbdafd !important;
     }
-
-
 }
 
 .calendar-days {
     display: grid;
     grid-template-columns: repeat(7, 50px); //fix later
     flex-wrap: wrap;
+
 
     .dayTitles {
         color: gray;
@@ -61,13 +60,15 @@
             background-color: white;
             color: rgb(56, 56, 56);
             transition: all 0.1s;
+
+
         }
 
 
     }
 
     @media(hover: hover) and (pointer: fine) {
-        .day:not(.selected):hover button {
+        .day:not(.selected, .non-selectable-date):hover button {
             background-color: rgba(66, 66, 66, 0.137) !important;
         }
     }
@@ -76,6 +77,12 @@
     .today {
         button {
             color: var(--Highlight-Colour);
+        }
+    }
+
+    .non-selectable-date {
+        button {
+            color: rgb(190, 190, 190);
         }
     }
 

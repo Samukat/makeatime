@@ -34,9 +34,6 @@ const DaySelector = (props: Props, ref: ForwardedRef<any>) => { //on sellect is 
     );
 
 
-
-
-
     //return when changed
     useEffect(() => {
         props.onSelect(selectedWeekDays)
@@ -102,6 +99,7 @@ const DaySelector = (props: Props, ref: ForwardedRef<any>) => { //on sellect is 
                     selectType='day'
                     className='create'
                     ref={calendar}
+                    pageImplementation='create'
                 />
             </div>
         )

@@ -8,7 +8,21 @@ import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 interface Props {
     onSelect: (selectedWeekDays: string[]) => void,
     selectType: string,
-    className?: string
+    className?: string,
+    selectedDates?: string[]
+    pageImplementation: string                                 // already selected dates
+}
+
+function isDateSelected(selectedDates: string[], date: Date) {
+    console.log("rendering:\n");
+    let isSelected = false;
+    selectedDates.forEach((selectedDate) => {
+        if (selectedDate == date.toISOString().split('T')[0]) {
+            console.log("true\n");
+            isSelected = true;
+        }
+    });
+    return isSelected;
 }
 
 function getMonthRange(dayInMonth: Date) {
@@ -70,7 +84,7 @@ const Calendar = (props: Props, ref: ForwardedRef<any>) => {
         setSelectedDateDays([]);
     }
 
-    const handleSelectDay = (day: Date) => {
+    const handleSelectDay = (day: Date, selectedDates: string[]) => {
         if (props.selectType === 'day') {
             if (selectedDateDays.some((value: Date) => isEqual(day, value))) {
                 setSelectedDateDays(selectedDateDays =>
@@ -90,7 +104,6 @@ const Calendar = (props: Props, ref: ForwardedRef<any>) => {
                     setSelectedDateDays(selectedDateDays => [...selectedDateDays, week[i]]);
                 }
             }
-            console.log(selectedDateDays)
         }
     };
 
@@ -119,23 +132,28 @@ const Calendar = (props: Props, ref: ForwardedRef<any>) => {
                     <p className='dayTitles'>F</p>
                     <p className='dayTitles'>S</p>
 
-                    {getMonthRange(currentMonth).map((date, dateIdx) => (
-                        <div key={date.toString()} className={classNames(
-                            'day',
-                            isToday(date) && 'today',
-                            !isSameMonth(date, currentMonth) && 'diffMonth',
-                            selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'selected',
-                            selectedDateDays.some((value: Date) => { return isEqual(addDays(date, 1), value) }) && selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'onRight',
-                            selectedDateDays.some((value: Date) => { return isEqual(addDays(date, -1), value) }) && selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'onLeft'
-                        )}>
-                            <button
-                                onMouseEnter={() => { if (isMouseDown) { handleSelectDay(date) } }}
-                                onMouseDown={() => handleSelectDay(date)}
-                                type='button'>
-                                <time dateTime={format(date, 'yyyy-MM-dd')}>{format(date, 'd')}</time>
-                            </button>
-                        </div>
-                    ))}
+                    {getMonthRange(currentMonth).map((date, dateIdx) => {
+                        console.log(isDateSelected(props.selectedDates || [], date))
+                        return (
+                            <div key={date.toString()} className={classNames(
+                                'day',
+                                isToday(date) && 'today',
+                                !isSameMonth(date, currentMonth) && 'diffMonth',
+                                isDateSelected(props.selectedDates || [], date) || props.pageImplementation == 'create' ? 'selectable-date' : 'non-selectable-date',
+                                selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'selected',
+                                selectedDateDays.some((value: Date) => { return isEqual(addDays(date, 1), value) }) && selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'onRight',
+                                selectedDateDays.some((value: Date) => { return isEqual(addDays(date, -1), value) }) && selectedDateDays.some((value: Date) => { return isEqual(date, value) }) && 'onLeft'
+                            )}>
+                                <button
+                                    onMouseEnter={() => { if (isMouseDown) { handleSelectDay(date, props.selectedDates || []) } }}
+                                    onMouseDown={() => handleSelectDay(date, props.selectedDates || [])}
+                                    type='button'
+                                >
+                                    <time dateTime={format(date, 'yyyy-MM-dd')}>{format(date, 'd')}</time>
+                                </button>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>

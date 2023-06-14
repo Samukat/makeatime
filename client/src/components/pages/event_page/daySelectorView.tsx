@@ -108,6 +108,8 @@ const DaySelector: React.FC<Props> = (props) => {
                 onSelect={() => { }}
                 selectType='week'
                 className='calendar'
+                selectedDates={props.dates}
+                pageImplementation='event'
             />
         </div>
     )

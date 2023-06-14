@@ -11,7 +11,6 @@ interface Props {
 const time_interval = 15;
 
 function createButtonArray(startTimeOBJ: InstanceType<typeof Time>, endTimeOBJ: InstanceType<typeof Time>, time_interval: number) {
-    console.log(startTimeOBJ, endTimeOBJ)
 
     const elapsed_time = startTimeOBJ.interval(endTimeOBJ)
     const total_btns = elapsed_time.count_intervals(time_interval) + 1;
